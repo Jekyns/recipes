@@ -11,6 +11,7 @@
 |
 */
 use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -52,3 +53,5 @@ Route::match(['get', 'post'],'home',function (Request $request) {
 Route::match(['get', 'post'],'allprofiles', 'ProfilesController@index');
 Route::get('profile/{id}', 'ProfilesController@show');
 Route::match(['get', 'post'],'registration', 'MyController@index');
+Route::match(['get', 'post'],'addpost', 'PostController@addpost');
+
