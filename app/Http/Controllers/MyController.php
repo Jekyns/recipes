@@ -44,8 +44,11 @@ class MyController extends BaseController
                     session(['mobile' => $request->input('mobile')]);
                     session(['role'=>1]);
 
-                    DB::insert('insert into users (login ,password,email,first_name,surname,gender,mobile,avatar,role) values (?,?,?,?,?,?,?,?,?)',
+                    DB::insert('insert into users (login ,password,email,first_name,surname,gender,mobile,avatar,role) values (?,?,?,?,?,?,?,?,?)',   //заносим все данные в базу данных
                         [session('login'),session('password'),session('email'),session('first_name'),session('surname'),session('gender'),session('mobile'),session('avatar'),session('role')]);
+                    $login=session('login');
+                    $id = DB::select("select * from users where login = '$login'");   //берем id и заносим в сессию
+                    session(['id'=>$id[0]->id]);
                 }
         }
         return redirect('profile');//выводим профиль

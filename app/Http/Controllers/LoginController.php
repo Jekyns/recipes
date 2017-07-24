@@ -18,6 +18,7 @@ class LoginController extends BaseController
 
     public function index(Request $request)
     {
+        
         if($request->all()) {
             $line=1;
             $i=0;
