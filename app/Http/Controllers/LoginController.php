@@ -34,6 +34,7 @@ class LoginController extends BaseController
                 session(['mobile' => $results[0]->mobile]);
                 session(['avatar'=>$results[0]->avatar]);
                 session(['role'=>$results[0]->role]);
+                session(['id'=>$results[0]->id]);
                 return redirect('profile');//делаем редирект на профиль
             }
             //если такого пользователя нет то возвращаем форму входа

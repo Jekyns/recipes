@@ -16,9 +16,9 @@ class PostController extends BaseController
 {
     public function addPost(Request $request){
         if($request->all()){
-            
+
             DB::insert('insert into posts (dish,recipe,user_id) values (?,?,?)',
-                [$request->input('dish'),$request->input('recipe'),1]);
+                [$request->input('dish'),$request->input('recipe'),session('id')]);
             return 0;
         }
 
