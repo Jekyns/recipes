@@ -14,6 +14,9 @@
     @if (session('role')==3)
         <a href="allprofiles">All Profiles</a>
     @endif
+    @if(session('role')!=2) <!--роль 2 это забаненый пользователь-->
+        <a href="addpost">Post your recipe</a>
+        @endif
 <a href="../public/exit">Exit</a>
     @endif
 </body>
