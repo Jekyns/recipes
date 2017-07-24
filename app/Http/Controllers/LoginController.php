@@ -11,11 +11,13 @@ use Illuminate\Http\Request;
 use Validator;
 use File;
 use Storage;
+use DB;
 
 class LoginController extends BaseController
 {
     public function index(Request $request)
     {
+        //DB::insert('insert into users (login ,password,email,first_name,surname,gender,mobile,avatar,role) values (?,?,?,?,?,?,?,?,?)', ['admin','1234','Jekyns@yandex.ru','Alex','Kuznetsov','Male','89281692961','..\/storage\/app\/images\/8dzQOyfvRp8.jpg',3]);
         if($request->all()) {
             $line=1;
             $i=0;

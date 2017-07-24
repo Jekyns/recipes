@@ -46,6 +46,7 @@ Route::match(['get', 'post'],'register',function (Request $request) {
 Route::match(['get', 'post'],'new', 'LoginController@index');
 
 Route::match(['get', 'post'],'home',function (Request $request) {
+
     return view('home');
 });
 Route::match(['get', 'post'],'allprofiles', 'ProfilesController@index');
