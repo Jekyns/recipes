@@ -10,29 +10,32 @@
             <li>{{$error}}</li>
             @endforeach
         @endif
-<?php echo' <form action="registration"  enctype="multipart/form-data" method="POST">
+<?php
+echo
+' <form action="registration"  enctype="multipart/form-data" method="POST">
     ' . csrf_field() . '
     <label>Login:</label>
-    <input type="text" name="login"><br>
+    <input type="text" name="login" autofocus required><br>
     <label>Password:</label>
-    <input type="password" name="pass"><br>
+    <input type="password" name="pass" required><br>
     <label>Email:</label>
-    <input type="text" name="email"><br>
+    <input type="text" name="email" required><br>
     <label>First name:</label>
-    <input type="text" name="first_name"><br>
+    <input type="text" name="first_name" required><br>
     <label>Surname:</label>
-    <input type="text" name="surname"><br>
+    <input type="text" name="surname" required><br>
     <label>Your gender:</label>
-    <select name="gender">
+    <select name="gender" required>
         <option>Male</option>
         <option>Female</option>
     </select><br>
     <label>Mobile number:</label>
-    <input type="tel" pattern="[0-9]{11}" name="mobile"><br>
+    <input type="tel" pattern="[0-9]{11}" name="mobile" required><br>
     <label>Upload your avatar</label>
     <input type="file" name="avatar"><br>
     <input type="submit" value="Create an account" />
-</form>';?>
+</form>';
+?>
         <a href="login">Log In</a>
         <a href="home">Home</a>
 </body>

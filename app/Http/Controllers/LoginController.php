@@ -19,9 +19,9 @@ class LoginController extends BaseController
         if($request->all()) {
             $line=1;
             $i=0;
-            foreach(file('../storage/app/user.txt') as $line) {//для каждой строки файла пользователей
-                $user=json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '',file('../storage/app/user.txt')[$i]),true);//декодируем строку
-                if($user['login']==$request->input('name')&&($user['password']==$request->input('password'))){//если логин и пароль совпадаед с логином и паролем из файла то заносим все данные в сессию
+            foreach(file('../storage/app/user.txt') as $line) {
+                $user=json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '',file('../storage/app/user.txt')[$i]),true);
+                if($user['login']==$request->input('name')&&($user['password']==$request->input('password'))){
                     session(['login' => $user['login']]);
                     session(['password' => $user['password']]);
                     session(['email' => $user['email']]);
@@ -31,7 +31,7 @@ class LoginController extends BaseController
                     session(['mobile' => $user['mobile']]);
                     session(['avatar'=>$user['avatar']]);
                     session(['role'=>$user['role']]);
-                    return redirect('profile');//делаем редирект на профиль
+                    return redirect('profile');
                 }
                 $i+=1;
             }

@@ -23,26 +23,23 @@ Route::match(['get', 'post'],'register',function (Request $request) {
         return view('register');
     }
 });
-    Route::match(['get', 'post'], 'profile', function(){
-        if (session()->has('login')) {//если мы залогенены то показываем наш профиль
-
-            return view('profile');
-
-
-        }
-        else{ //иначе возвращаем 404
-            return '404';
-        }
-    });
-    Route::match(['get', 'post'],'exit', 'MyController@quit');
-    Route::match(['get', 'post'],'login',function (Request $request) {
-        if(session()->has('login')){
-            return redirect('profile');
-        }
-        else {
-            return view('login');
-        }
-        });
+Route::match(['get', 'post'], 'profile', function(){
+    if (session()->has('login')) {
+        return view('profile');
+    }
+    else{
+        return '404';
+      }
+});
+Route::match(['get', 'post'],'exit', 'MyController@quit');
+Route::match(['get', 'post'],'login',function (Request $request) {
+  if(session()->has('login')){
+    return redirect('profile');
+  }
+  else {
+      return view('login');
+  }
+});
 Route::match(['get', 'post'],'new', 'LoginController@index');
 
 Route::match(['get', 'post'],'home',function (Request $request) {

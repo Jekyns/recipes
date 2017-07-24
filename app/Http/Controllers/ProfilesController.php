@@ -19,22 +19,20 @@ class ProfilesController extends BaseController
     {
         $line=1;
         $i=0;
-        $users=array(
-
-    );
-        foreach(file('../storage/app/user.txt') as $line) {//для каждой строки файла пользователей
-            $user=json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '',file('../storage/app/user.txt')[$i]),true);//декодируем строку
+        $users=array();
+        foreach(file('../storage/app/user.txt') as $line) {
+            $user=json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '',file('../storage/app/user.txt')[$i]),true);
             $users[$i]=array(
-                'login' => $user['login'],
-            'password' => $user['password'],
-            'email' => $user['email'],
-            'first_name' => $user['first_name'],
-            'surname' => $user['surname'],
-            'gender' => $user['gender'],
-            'mobile' => $user['mobile'],
-            'avatar'=>$user['avatar'],
-            'role'=>$user['role']
-            );
+              'login' => $user['login'],
+              'password' => $user['password'],
+              'email' => $user['email'],
+              'first_name' => $user['first_name'],
+              'surname' => $user['surname'],
+              'gender' => $user['gender'],
+              'mobile' => $user['mobile'],
+              'avatar'=>$user['avatar'],
+              'role'=>$user['role']
+              );
 
             $i+=1;
         }
@@ -43,8 +41,8 @@ class ProfilesController extends BaseController
         return view('allprofiles')->with(['users'=>$users]);
 
     }
-    public function show($id){//показывает страницу определенного юзера
-        $user_js=json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '',file('../storage/app/user.txt')[$id]),true);//декодируем строку
+    public function show($id){
+        $user_js=json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '',file('../storage/app/user.txt')[$id]),true);
         $user=array(
             'login' => $user_js['login'],
             'password' => $user_js['password'],

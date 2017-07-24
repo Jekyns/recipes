@@ -17,42 +17,49 @@ $mobile = session('mobile');
 $avatar=session('avatar');
 ?>
 
-@if(isset($user))<!--если нам передают человека которого нам нужно отобразить -->
+@if(isset($user))
     <h3>Profile</h3>
     @if ($user['avatar'])
-        <?php $avatar='../'.$user['avatar']?>
-        <img src = {{$avatar}}>
+        <?php $avatar='../'.$user['avatar'];?>
+        <img src ="{{url('storage\app\images\2O9Il60FQMk.jpg')}}">
     @endif
-    @else
-<h3>Your profile</h3>
-@if (session('avatar'))
-<img src = {{$avatar}}>
+
+    <!-- @else
+    <h3>Your profile</h3>
+
+    @if (session('avatar'))
+    <img src = {{$avatar}}>
+    @endif -->
+
 @endif
-@endif
+
 @if(isset($user))
-<?php      $login = $user['login'];//если администратор хочет посмотреть какого то пользователя то он передат данные этого пользователя
+<?php
+    $login = $user['login'];
     $password= $user['password'];
     $email = $user['email'];
     $first_name = $user['first_name'];
     $surname = $user['surname'];
     $gender = $user['gender'];
     $mobile = $user['mobile'];
-    $avatar=$user['avatar'];
-
+    $avatar = $user['avatar'];
 ?>
 @endif
-<p>Login: {{$login}}<br>
-Password: {{$password}}<br>
-Email: {{$email}}<br>
-First name: {{$first_name}}<br>
-Surname: {{$surname}}<br>
-Gender: {{$gender}}<br>
-Mobile number: {{$mobile}}<br>
-@if(isset($user))
+<!--
+<p>
+  Login: {{$login}}<br>
+  Password: {{$password}}<br>
+  Email: {{$email}}<br>
+  First name: {{$first_name}}<br>
+  Surname: {{$surname}}<br>
+  Gender: {{$gender}}<br>
+  Mobile number: {{$mobile}}<br>
+  @if(isset($user))
     <a href="../home">Home</a>
-    @else
-    <a href="http://laravel5/public/exit">Exit</a>
-    <a href="home">Home</a>
-    @endif
-</p>
+  @else
+    <a href="http://recipes/exit">Exit</a>
+    <a href="../home">Home</a>
+  @endif
+</p> -->
+
 </body>
