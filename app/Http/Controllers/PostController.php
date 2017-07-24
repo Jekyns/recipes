@@ -17,8 +17,18 @@ class PostController extends BaseController
     public function addPost(Request $request){
         if($request->all()){
 
-            DB::insert('insert into posts (dish,recipe,user_id) values (?,?,?)',
-                [$request->input('dish'),$request->input('recipe'),session('id')]);
+            if ($request->hasFile('image'))//если в форме добавили картинку то добавляем эту картику в папку storage/app/images
+            {
+                $file = $request->file('image');
+                $filename = $file->getClientOriginalName();
+                \Storage::put('/images/posts/'.$filename, \File::get($file));
+               // session(['avatar' =>'../storage/app/images/'.$filename]);
+            }
+
+
+
+            DB::insert('insert into posts (dish,recipe,ingredients,image,user_id) values (?,?,?,?,?)',
+                [$request->input('dish'),$request->input('recipe'),$request->input('ingredients'),'../storage/app/images/posts/'.$filename,session('id')]);
             return 0;
         }
 
