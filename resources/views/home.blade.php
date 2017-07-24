@@ -14,6 +14,6 @@
     @if (session('role')==3)
         <a href="allprofiles">All Profiles</a>
     @endif
-<a href="http://laravel5/public/exit">Exit</a>
+<a href="../public/exit">Exit</a>
     @endif
 </body>

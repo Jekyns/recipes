@@ -28,7 +28,7 @@ class LoginController extends BaseController
             $input_password=$request->input('password');
             $results = DB::select("select * from users where login = '$input_login' AND password = '$input_password'");
             if(!empty($results)){//если нашолся такой пользователь из базы данных
-                session(['login' => $results[0]->login]);
+                session(['login' => $results[0]->login]);//то заполняем сессию
                 session(['password' => $results[0]->password]);
                 session(['email' => $results[0]->email]);
                 session(['first_name' => $results[0]->first_name]);

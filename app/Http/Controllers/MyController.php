@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Input;
 use Validator;
 use File;
 use Storage;
+use DB;
 
 class MyController extends BaseController
 {
@@ -31,10 +32,10 @@ class MyController extends BaseController
                         \Storage::put('/images/'.$filename, \File::get($file));
                         session(['avatar' =>'../storage/app/images/'.$filename]);
                     }
-                    else{
+                    else{//иначе пристваеваем пустоту
                         session(['avatar' =>'']);
                     }
-                    session(['login' => $request->input('login')]);
+                    session(['login' => $request->input('login')]);//заносим все данные в сессию
                     session(['password' => $request->input('pass')]);
                     session(['email' => $request->input('email')]);
                     session(['first_name' => $request->input('first_name')]);
@@ -43,7 +44,9 @@ class MyController extends BaseController
                     session(['mobile' => $request->input('mobile')]);
                     session(['role'=>1]);
 
-                    $user = array(
+                    DB::insert('insert into users (login ,password,email,first_name,surname,gender,mobile,avatar,role) values (?,?,?,?,?,?,?,?,?)',
+                        [session('login'),session('password'),session('email'),session('first_name'),session('surname'),session('gender'),session('mobile'),session('avatar'),session('role')]);
+                    $user = array(//вывод в файл
                         "login" => session('login'),
                         "password" => session('password'),
                         'email' => session('email'),
