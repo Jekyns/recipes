@@ -37,7 +37,8 @@ class ProfilesController extends BaseController
             'gender' => $all[$i]->gender,
             'mobile' => $all[$i]->mobile,
             'avatar'=>$all[$i]->avatar,
-            'role'=>$all[$i]->role
+            'role'=>$all[$i]->role,
+                'id'=>$all[$i]->id
             );
         }
         return view('allprofiles')->with(['users'=>$users]);//передаем массив всех пользователей во вьюху allprofiles

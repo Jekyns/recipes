@@ -10,6 +10,7 @@
 
     <table cellpadding="7" border="2" width="100%">
 <tr>
+    <th>ID</th>
     <th>Login</th>
     <th>Password</th>
     <th>Email</th>
@@ -22,7 +23,7 @@
 </tr>
 @for ($i=0;$i<count($users);++$i)<!--пока не кончился массив всех пользователей-->
             <tr>
-
+                <td> {{$users[$i]['id']}}</td>
                 <td> {{$users[$i]['login']}}</td>
                 <td>{{$users[$i]['password']}}</td>
                     <td>{{$users[$i]['email']}}</td>
