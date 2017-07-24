@@ -51,7 +51,7 @@ Mobile number: {{$mobile}}<br>
 @if(isset($user))
     <a href="../home">Home</a>
     @else
-    <a href="http://laravel5/public/exit">Exit</a>
+    <a href="../public/exit">Exit</a>
     <a href="home">Home</a>
     @endif
 </p>
