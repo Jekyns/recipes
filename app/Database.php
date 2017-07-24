@@ -18,7 +18,17 @@ class Database extends Model
             "mobile" => $user['mobile'], 
             "avatar" => $user['avatar'], 
             "role" => $user['role']
-            ]);
-        
+            ]);  
+    }
+    
+    static public function LoginUser($login, $password){
+        $user = DB::table('users')
+            ->select('login', 'password', 'email', 'first_name', 'surname', 'gender', 'mobile', 'avatar')
+            ->where([
+                ['login', '=', "$login"], 
+                ['password', '=', "$password"]])
+            ->take(1)            
+            ->get();        
+        return $user;
     }
 }

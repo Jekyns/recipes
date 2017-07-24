@@ -14,5 +14,6 @@ Password:  {!! Form::password('password') !!}
 {!! Form::submit('Log in') !!}
 
 {!! Form::close() !!}
+    
 <a href="register">Sign Up</a>
 </body>

@@ -11,8 +11,9 @@
 |
 */
 use Illuminate\Http\Request;
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::match(['get', 'post'],'register',function (Request $request) {
@@ -23,15 +24,7 @@ Route::match(['get', 'post'],'register',function (Request $request) {
         return view('register');
     }
 });
-Route::match(['get', 'post'], 'profile', function(){
-    if (session()->has('login')) {
-        return view('profile');
-    }
-    else{
-        return '404';
-      }
-});
-Route::match(['get', 'post'],'exit', 'MyController@quit');
+
 Route::match(['get', 'post'],'login',function (Request $request) {
   if(session()->has('login')){
     return redirect('profile');
@@ -40,11 +33,31 @@ Route::match(['get', 'post'],'login',function (Request $request) {
       return view('login');
   }
 });
-Route::match(['get', 'post'],'new', 'LoginController@index');
+
+//Route::match(['get', 'post'], 'profile', function(){
+//    if (session()->has('login')) {
+//        return view('profile');
+//    }
+//    else{
+//        return '404';
+//      }
+//});
+
+
+Route::match(['get', 'post'],'profile', 'LoginController@index');
 
 Route::match(['get', 'post'],'home',function (Request $request) {
     return view('home');
 });
-Route::match(['get', 'post'],'allprofiles', 'ProfilesController@index');
-Route::get('profile/{id}', 'ProfilesController@show');
+
 Route::match(['get', 'post'],'registration', 'MyController@index');
+
+
+
+Route::match(['get', 'post'],'allprofiles', 'ProfilesController@index');
+
+Route::get('profile/{id}', 'ProfilesController@show');
+
+
+
+Route::match(['get', 'post'],'exit', 'MyController@quit');
