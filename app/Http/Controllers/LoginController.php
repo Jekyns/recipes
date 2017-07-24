@@ -15,6 +15,7 @@ use DB;
 
 class LoginController extends BaseController
 {
+
     public function index(Request $request)
     {
         //$results = DB::select("select * from users where login = 'admin'");
@@ -39,11 +40,8 @@ class LoginController extends BaseController
                 session(['role'=>$results[0]->role]);
                 return redirect('profile');//делаем редирект на профиль
             }
-            else{                //если такого пользователя нет
-                return redirect('login');
-            }
-
+            //если такого пользователя нет то возвращаем форму входа
         }
-        return redirect('login');
+        //return redirect('login');
     }
 }

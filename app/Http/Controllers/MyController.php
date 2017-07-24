@@ -46,23 +46,9 @@ class MyController extends BaseController
 
                     DB::insert('insert into users (login ,password,email,first_name,surname,gender,mobile,avatar,role) values (?,?,?,?,?,?,?,?,?)',
                         [session('login'),session('password'),session('email'),session('first_name'),session('surname'),session('gender'),session('mobile'),session('avatar'),session('role')]);
-                    $user = array(//вывод в файл
-                        "login" => session('login'),
-                        "password" => session('password'),
-                        'email' => session('email'),
-                        'first_name' => session('first_name'),
-                        'surname' => session('surname'),
-                        'gender' => session('gender'),
-                        'mobile' => session('mobile'),
-                        'avatar' => session('avatar'),
-                        'role' => session('role')
-                    );
-
-                    Storage::disk('local')->append('user.txt', json_encode($user));
                 }
-                return redirect('profile');//выводим вьюху профиль
         }
-        return redirect('profile');
+        return redirect('profile');//выводим профиль
 
     }
     public function quit(Request $request){//функция выхода из сессии

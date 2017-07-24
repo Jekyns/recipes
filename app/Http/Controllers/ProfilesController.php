@@ -12,49 +12,48 @@ use Validator;
 use File;
 use Storage;
 use View;
+use DB;
 
 class ProfilesController extends BaseController
 {
-    public function index(Request $request)
+    public function index(Request $request)//функци€ возвращает вьюху с массивом всех пользователей
     {
         $line=1;
         $i=0;
         $users=array(
 
     );
-        foreach(file('../storage/app/user.txt') as $line) {//дл€ каждой строки файла пользователей
-            $user=json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '',file('../storage/app/user.txt')[$i]),true);//декодируем строку
-            $users[$i]=array(
-                'login' => $user['login'],
-            'password' => $user['password'],
-            'email' => $user['email'],
-            'first_name' => $user['first_name'],
-            'surname' => $user['surname'],
-            'gender' => $user['gender'],
-            'mobile' => $user['mobile'],
-            'avatar'=>$user['avatar'],
-            'role'=>$user['role']
+        $all=DB::table('users')->get();//содержит все строки базы данных
+
+        for($i=0;isset($all[$i]);++$i){ //пока не закончились строки базы данных
+
+
+            $users[$i]=array(//заполн€ть массив всех пользователей
+                'login' => $all[$i]->login,
+            'password' => $all[$i]->password,
+            'email' =>$all[$i]->email,
+            'first_name' => $all[$i]->first_name,
+            'surname' =>$all[$i]->surname,
+            'gender' => $all[$i]->gender,
+            'mobile' => $all[$i]->mobile,
+            'avatar'=>$all[$i]->avatar,
+            'role'=>$all[$i]->role
             );
-
-            $i+=1;
         }
-
-
-        return view('allprofiles')->with(['users'=>$users]);
-
+        return view('allprofiles')->with(['users'=>$users]);//передаем массив всех пользователей во вьюху allprofiles
     }
     public function show($id){//показывает страницу определенного юзера
-        $user_js=json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '',file('../storage/app/user.txt')[$id]),true);//декодируем строку
+        $all=DB::table('users')->get();//содержит все строки базы данных
         $user=array(
-            'login' => $user_js['login'],
-            'password' => $user_js['password'],
-            'email' => $user_js['email'],
-            'first_name' => $user_js['first_name'],
-            'surname' => $user_js['surname'],
-            'gender' => $user_js['gender'],
-            'mobile' => $user_js['mobile'],
-            'avatar'=>$user_js['avatar'],
-            'role'=>$user_js['role']
+            'login' => $all[$id]->login,
+            'password' => $all[$id]->password,
+            'email' => $all[$id]->email,
+            'first_name' => $all[$id]->first_name,
+            'surname' =>$all[$id]->surname,
+            'gender' => $all[$id]->gender,
+            'mobile' =>  $all[$id]->mobile,
+            'avatar'=>$all[$id]->avatar,
+            'role'=>$all[$id]->role
         );
         return view('profile')->with(['user'=>$user]);
     }

@@ -49,6 +49,7 @@ Surname: {{$surname}}<br>
 Gender: {{$gender}}<br>
 Mobile number: {{$mobile}}<br>
 @if(isset($user))
+        <a href="../allprofiles">Back</a>
     <a href="../home">Home</a>
     @else
     <a href="../public/exit">Exit</a>

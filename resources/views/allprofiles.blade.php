@@ -20,7 +20,7 @@
     <th>Avatar</th>
     <th>URL</th>
 </tr>
-@for ($i=0;$i<count($users);++$i)
+@for ($i=0;$i<count($users);++$i)<!--пока не кончился массив всех пользователей-->
             <tr>
 
                 <td> {{$users[$i]['login']}}</td>
