@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 24 2017 г., 12:43
+-- Время создания: Июл 24 2017 г., 15:29
 -- Версия сервера: 5.5.53
 -- Версия PHP: 5.6.29
 
@@ -44,12 +44,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`login`, `password`, `email`, `first_name`, `surname`, `gender`, `mobile`, `avatar`, `role`, `id`) VALUES
-('Dayle', '2', 'Jekyns@yandex.ru', 'alex', 'kuzn', 'male', '8', '', 3, 1),
-('Dayle', '2', 'Jekyns@yandex.ru', 'alex', 'kuzn', 'male', '8', '', 3, 2),
-('Dayle', '2', 'Jekyns@yandex.ru', 'alex', 'kuzn', 'male', '8', '', 3, 3),
-('Dayle', '123981313', 'Jekyns@yandex.ru', 'alex', 'kuzn', 'male', '8', '', 3, 4),
-('admin', '1234', 'Jekyns@yandex.ru', 'Alex', 'Kuznetsov', 'Male', '89281692961', '', 3, 5),
-('admin', '1234', 'Jekyns@yandex.ru', 'Alex', 'Kuznetsov', 'Male', '89281692961', '..\\/storage\\/app\\/images\\/8dzQOyfvRp8.jpg', 3, 6);
+('admin', '1234', 'Jekyns@yandex.ru', 'Alex', 'Kuznetsov', 'Male', '89281692961', '', 3, 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -69,7 +64,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -55,7 +55,7 @@ class ProfilesController extends BaseController
             'avatar'=>$all[$id]->avatar,
             'role'=>$all[$id]->role
         );
-        return view('profile')->with(['user'=>$user]);
+        return view('profile')->with(['user'=>$user]);//возвращаем вьюху профиля с нужным нам юзером
     }
 
 
