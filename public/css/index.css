@@ -1,0 +1,49 @@
+.bodywarp {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+}
+.bodywarp__registration-form{
+    text-align: right;
+}
+.registration-input{
+    margin-top: 5px;
+}
+.headerWrapper{
+    height: 50px;
+}
+
+header#siteHeader{
+    height: 50px;
+    background: #e49d41;
+}
+.menuItems{
+    height: 50px;
+    padding-top: 15px;
+    float: right;
+    padding-right: 15px;
+}
+.menuItems-item{
+    padding: 16px 10px;
+}
+label#input__label-avatar{
+    margin-right: 50px;
+    margin-top: 20px;
+}
+input.input__button{
+    margin-right: 25px;
+}
+.bodywarp__registration {
+    height: 450px;
+    width: 450px;
+    background: #fff;
+    padding-right: 110px;
+}
+span.bodywarp__registration-text{
+    font-size: 44px;
+}
+.bodywarp__registration-label{
+    text-align: center;
+    padding-left: 140px;
+}
