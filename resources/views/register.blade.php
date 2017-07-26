@@ -5,11 +5,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="../public/css/index.css">
     <style>
-        .bodywarp__registration {
-            border: 7px groove #e49d41;
-            border-radius: 30px;
-        }
-
         body{
             background-image: url(../public/css/images/registration_bg.jpg);
             background-size: cover;

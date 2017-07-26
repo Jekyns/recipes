@@ -12,6 +12,7 @@
         @if(!session()->has('login'))
         <a href="register"><span class="menuItems-item">Sign Up</span></a>
         <a href="login"><span class="menuItems-item">Log In</span></a>
+
         @endif
         @if(session()->has('login'))
             <a href="profile"><span class="menuItems-item">Profile</span></a>
@@ -27,4 +28,33 @@
     </div>
 </header>
 </div>
+<div class="homePageHeader">
+    <div class="homePageHeader__wrapper">
+        <div class="social">
+            <div class="socical__item">
+                <div class="socical__item-facebook">
+                    <a href="">facebook</a>
+                </div>
+            </div>
+            <div class="socical__item">
+                <div class="socical__item-instagram">
+                    <a href="">instagram</a>
+                </div>
+            </div>
+            <div class="socical__item">
+                <div class="socical__item-twitter">
+                    <a href="">twitter</a>
+                </div>
+            </div>
+            <div class="socical__item">
+                <div class="socical__item-github">
+                    <a href="https://github.com/Jekyns/recipes">github</a>
+                </div>
+            </div>
+        </div>
+        <h1>Recipes</h1>
+    </div>
+</div>
+
+
 </body>

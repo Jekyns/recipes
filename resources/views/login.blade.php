@@ -8,8 +8,7 @@
         .bodywarp__registration {
             height: 250px;
 
-            border: 7px groove #e49d41;
-            border-radius: 30px;
+
 
         }
         input[type="text"] {

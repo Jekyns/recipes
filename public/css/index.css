@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('fonts/icomoon.eot?7d2fnr');
+    src:  url('fonts/icomoon.eot?7d2fnr#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?7d2fnr') format('truetype'),
+    url('fonts/icomoon.woff?7d2fnr') format('woff'),
+    url('fonts/icomoon.svg?7d2fnr#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .bodywarp {
     align-items: center;
     justify-content: center;
@@ -16,16 +27,20 @@
 
 header#siteHeader{
     height: 50px;
-    background: #e49d41;
+    background:#24292d;
 }
 .menuItems{
     height: 50px;
-    padding-top: 15px;
+    padding-top: 13px;
     float: right;
     padding-right: 15px;
 }
 .menuItems-item{
     padding: 16px 10px;
+    color: #fff;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    text-decoration: none;
 }
 label#input__label-avatar{
     margin-right: 50px;
@@ -39,8 +54,8 @@ input.input__button{
     width: 450px;
     background: #fff;
     padding-right: 110px;
-    border: 7px groove #e49d41;
-    border-radius: 70% 0 / 70%;
+    border: 7px groove #a9a9a9;
+    border-radius: 30px;
 }
 span.bodywarp__registration-text{
     font-size: 44px;
@@ -54,4 +69,67 @@ span.bodywarp__registration-text{
     border-radius: 15px;
     padding: 10px 10px;
     width: 280px;
+}
+a:hover {
+
+    text-decoration: none;
+}
+.menuItems-item:hover {
+    color: #e49d41;
+    text-decoration: none;
+}
+.homePageHeader {
+    font-family: 'icomoon';
+    margin: 0;
+    height: 100px;
+    overflow: hidden;
+    border-bottom: groove 4px;
+}
+.social {
+    float: left;
+    display: inline-flex;
+    padding-top: 10px;
+
+}
+.homePageHeader__wrapper {
+
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+}
+.socical__item-facebook a::before {
+    content: "\ea90";
+    font-size: 24px;
+    color: #24292d;
+}
+.socical__item-github a::before{
+    content: "\eab0";
+    font-size: 24px;
+    color: #24292d;
+}
+.socical__item-instagram a::before {
+    content: "\ea92";
+    font-size: 24px;
+    color: #24292d;
+}
+.socical__item-twitter a::before {
+    content: "\ea96";
+    font-size: 24px;
+    color: #24292d;
+}
+.socical__item-facebook, .socical__item-instagram, .socical__item-twitter, .socical__item-github {
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #24292d;
+    border-radius: 50px;
+}
+.socical__item-github:hover, .socical__item-twitter:hover, .socical__item-instagram:hover, .socical__item-facebook:hover{
+background: #e49d41;
+}
+.socical__item{
+    padding-right: 10px;
+}
+
+.socical__item a{
+    font-size: 0;
 }
