@@ -39,6 +39,8 @@ input.input__button{
     width: 450px;
     background: #fff;
     padding-right: 110px;
+    border: 7px groove #e49d41;
+    border-radius: 70% 0 / 70%;
 }
 span.bodywarp__registration-text{
     font-size: 44px;
@@ -46,4 +48,10 @@ span.bodywarp__registration-text{
 .bodywarp__registration-label{
     text-align: center;
     padding-left: 140px;
+}
+.errors{
+    background: #fff;
+    border-radius: 15px;
+    padding: 10px 10px;
+    width: 280px;
 }
