@@ -67,6 +67,7 @@
                         </div>
                         <div class="post__text">
                             <div class="text__dish">{{$post->dish}}</div>
+<<<<<<< HEAD
 
                             <div>{{$post->created_at}}</div>
                             <div class="test__ingredients"><span>{{$post->ingredients}}</span></div>
@@ -76,6 +77,11 @@
                             <div class="text__recipes"><span>Directions: {{$post->recipe}}</span></div>
                             <div class="text__author">Author: <a href="">{{$post->user_id}}</a></div>
 
+=======
+                            <div class="test__ingredients"><span>Ingredients: {{$post->ingredients}}</span></div>
+                            <div class="text__recipes"><span>Directions: {{$post->recipe}}</span></div>
+                            <div class="text__author">Author: <a href="">{{$post->user_id}}</a></div>
+>>>>>>> 0eed242e015d6da7e5f48535331c4e8c355f6615
                         </div>
                     </div>
         @endforeach
