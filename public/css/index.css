@@ -133,3 +133,39 @@ background: #e49d41;
 .socical__item a{
     font-size: 0;
 }
+.siteConteiner {
+    margin: 0 auto;
+    padding: 0;
+}
+.siteConteiner__content {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post {
+    border-bottom: solid 1px #24292d;
+    overflow: hidden;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+.post__img {
+    overflow: hidden;
+    float: left;
+}
+.post__text {
+    text-align: left;
+    max-width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 18px;
+    overflow: hidden;
+    padding-left: 50px;
+}
+.text__dish {
+    font-size: 36px;
+    text-align: center;
+    padding-bottom: 27px;
+}
+.ingredients {
+    padding-bottom: 20px;
+}

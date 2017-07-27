@@ -56,13 +56,23 @@
     </div>
 </div>
     <div>
+        <div class="siteConteiner">
+            <div class="siteConteiner__content">
         @foreach ($allposts as $post)
-            <p>{{$post->dish}}</p>
-            <p>Author: {{$post->user_id}}</p>  
-            <p>Ingredients: {{$post->ingredients}}</p>
-            <p>{{$post->image}}</p>
-            <p>Recipe: {{$post->recipe}}</p>
-            <br>
+                    <div class="post">
+                        <div class="post__img">
+                           <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Borsh.jpg">-->
+                            <?php $img=$post->image?>
+                            <img src = {{$img}}>
+                        </div>
+                        <div class="post__text">
+                            <div class="text__dish">{{$post->dish}}</div>
+                            <div class="test__ingredients"><span>{{$post->ingredients}}</span></div>
+                            <div class="text__recipes"><span>{{$post->recipe}}</span></div>
+                        </div>
+                    </div>
         @endforeach
+          </div>
+        </div>
     </div>
 </body>
