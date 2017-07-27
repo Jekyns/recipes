@@ -67,8 +67,9 @@
                         </div>
                         <div class="post__text">
                             <div class="text__dish">{{$post->dish}}</div>
-                            <div class="test__ingredients"><span>{{$post->ingredients}}</span></div>
-                            <div class="text__recipes"><span>{{$post->recipe}}</span></div>
+                            <div class="test__ingredients"><span>Ingredients: {{$post->ingredients}}</span></div>
+                            <div class="text__recipes"><span>Directions: {{$post->recipe}}</span></div>
+                            <div class="text__author">Author: <a href="">{{$post->user_id}}</a></div>
                         </div>
                     </div>
         @endforeach
