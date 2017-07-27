@@ -84,7 +84,7 @@
                                     <span>
                                         <b>Directions:</b> 
                                         {{mb_strimwidth($post->recipe, -0, 163, "")}} 
-                                        <a href="">SEE MORE &gt;&gt;</a>
+                                        <a href="post/{{$post->id}}">SEE MORE &gt;&gt;</a>
                                     </span>
                                 </div>
                                 <div class="text__author">

@@ -52,3 +52,4 @@ Route::match(['get', 'post'],'registration', 'MyController@index');
 Route::match(['get', 'post'],'addpost', 'PostController@addpost');
 
 Route::match(['get', 'post'], 'search', 'PostController@search');
+Route::match(['get', 'post'], 'post/{id}', 'PostController@show');

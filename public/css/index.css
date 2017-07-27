@@ -178,3 +178,26 @@ background: #e49d41;
     float: right;
     padding-top: 10px;
 }
+.content__ingredients {
+    float: left;
+    overflow: hidden;
+}
+.ingredients__item {
+    border-bottom: dotted 2px #7b7e81;
+    padding-top: 15px;
+}
+span.count {
+    float: right;
+}
+.content__directions {
+    float: left;
+    padding-left: 120px;
+
+}
+header.content__head {
+    text-align: center;
+}
+.content__image {
+    float: left;
+    padding-left: 100px;
+}

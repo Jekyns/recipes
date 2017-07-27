@@ -32,7 +32,7 @@ class PostController extends BaseController
                            '../storage/app/images/posts/'.$filename, 
                            session('id'),
                        ]);
-            return 0;
+            return redirect('home');
         }
 
     return view('addpost');
@@ -72,7 +72,14 @@ class PostController extends BaseController
                 }
             }
         }
-//        return redirect('home');
         return view('home')->with('allposts', $allposts);
+    }
+    public function show($id){//показывает страницу определенного поста
+        $post=DB::table('posts')
+            ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
+            ->where("id", '=', "$id")
+            ->get();
+       return view('post')->with(['post'=>$post[0]]);//возвращаем вьюху поста с нужным нам постом
+
     }
 }
