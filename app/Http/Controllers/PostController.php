@@ -24,12 +24,13 @@ class PostController extends BaseController
                 \Storage::put('/images/posts/'.$filename, \File::get($file));
                // session(['avatar' =>'../storage/app/images/'.$filename]);
             }
-            DB::insert('insert into posts (dish,recipe,ingredients,image,user_id) values (?,?,?,?,?)',
+            DB::insert('insert into posts (dish,recipe,ingredients,image,user_id,created_at) values (?, ?, ?, ?, ?, now())',
                        [
                            $request->input('dish'), 
-                            $request->input('recipe'), 
-                            $request->input('ingredients'), 
-                            '../storage/app/images/posts/'.$filename,session('id')
+                           $request->input('recipe'), 
+                           $request->input('ingredients'), 
+                           '../storage/app/images/posts/'.$filename, 
+                           session('id'),
                        ]);
             return 0;
         }
@@ -41,7 +42,7 @@ class PostController extends BaseController
     
     public function allPosts(){
         $allposts = DB::table('posts')
-            ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image')
+            ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
             ->get();
         
         $userNames = DB::table('users')

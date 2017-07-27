@@ -27,10 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `posts` (
-  `dish` varchar(255) NOT NULL,
-  `recipe` text NOT NULL,
-  `id` int(255) NOT NULL,
-  `user_id` int(255) NOT NULL
+    `id` int(255) NOT NULL, 
+    `user_id` int(255) NOT NULL, 
+    `dish` varchar(255) NOT NULL, 
+    `ingredients`varchar(255) NOT NULL, 
+    `recipe` text NOT NULL, 
+    `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

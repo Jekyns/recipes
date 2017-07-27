@@ -32,7 +32,8 @@ CREATE TABLE `posts` (
   `id` int(255) NOT NULL,
   `user_id` int(255) NOT NULL,
   `ingredients` text NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

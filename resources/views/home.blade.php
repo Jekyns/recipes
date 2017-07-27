@@ -61,14 +61,21 @@
         @foreach ($allposts as $post)
                     <div class="post">
                         <div class="post__img">
-                           <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Borsh.jpg">-->
+<!--                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Borsh.jpg">-->
                             <?php $img=$post->image?>
                             <img src = {{$img}}>
                         </div>
                         <div class="post__text">
                             <div class="text__dish">{{$post->dish}}</div>
+
+                            <div>{{$post->created_at}}</div>
                             <div class="test__ingredients"><span>{{$post->ingredients}}</span></div>
                             <div class="text__recipes"><span>{{$post->recipe}}</span></div>
+
+                            <div class="test__ingredients"><span>Ingredients: {{$post->ingredients}}</span></div>
+                            <div class="text__recipes"><span>Directions: {{$post->recipe}}</span></div>
+                            <div class="text__author">Author: <a href="">{{$post->user_id}}</a></div>
+
                         </div>
                     </div>
         @endforeach
