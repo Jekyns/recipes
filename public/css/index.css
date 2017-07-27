@@ -27,7 +27,7 @@
 
 header#siteHeader{
     height: 50px;
-    background:#24292d;
+    background:rgba(36, 41, 45, 0.6);
 }
 .menuItems{
     height: 50px;
@@ -173,4 +173,8 @@ background: #e49d41;
     padding-top: 15px;
     font-size: 15px;
     float: right;
+}
+.homePageHeader__wrapper-form{
+    float: right;
+    padding-top: 10px;
 }

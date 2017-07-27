@@ -30,6 +30,10 @@
 </div>
 <div class="homePageHeader">
     <div class="homePageHeader__wrapper">
+        {!! Form::open(array('action' => 'PostController@search', 'class'=>'homePageHeader__wrapper-form')) !!}
+        {!! Form::text('search', @$search) !!}
+        {!! Form::submit('Search') !!}
+        {!! Form::close() !!}
         <div class="social">
             <div class="socical__item">
                 <div class="socical__item-facebook">
@@ -56,10 +60,6 @@
     </div>
 </div>
     <div>
-        {!! Form::open(array('action' => 'PostController@search')) !!}
-        {!! Form::text('search', @$search) !!}
-        {!! Form::submit('Search') !!}
-        {!! Form::close() !!}
     </div>
     <div>
         <div class="siteConteiner">
@@ -70,7 +70,7 @@
                             <div class="post__img">
                                 <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Borsh.jpg">-->
                                 <?php $img=$post->image?>
-                                <img src = {{$img}}>
+                                <img src = {{$img}} width="550" height="455">
                             </div>
                             <div class="post__text">
                                 <div class="text__dish">{{$post->dish}}</div>
