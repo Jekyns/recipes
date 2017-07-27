@@ -72,6 +72,7 @@ class PostController extends BaseController
                 }
             }
         }
+//        return redirect('home');
         return view('home')->with('allposts', $allposts);
     }
 }

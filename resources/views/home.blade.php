@@ -64,28 +64,46 @@
         {!! Form::open(array('action' => 'PostController@allPosts')) !!}
         {!! Form::submit('Show All') !!}
         {!! Form::close() !!}
-        
     </div>
-    
     <div>
         <div class="siteConteiner">
             <div class="siteConteiner__content">
-        @foreach ($allposts as $post)
-                    <div class="post">
-                        <div class="post__img">
-                            <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Borsh.jpg">-->
-                            <?php $img=$post->image?>
-                            <img src = {{$img}}>
+                @isset($allposts)
+                    @foreach ($allposts as $post)
+                        <div class="post">
+                            <div class="post__img">
+                                <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Borsh.jpg">-->
+                                <?php $img=$post->image?>
+                                <img src = {{$img}}>
+                            </div>
+                            <div class="post__text">
+                                <div class="text__dish">{{$post->dish}}</div>
+                                <div class="test__ingredients">
+                                    <span>
+                                        <b>Ingredients:</b> 
+                                        {{mb_strimwidth($post->ingredients, -0, 80, "...")}}
+                                    </span>
+                                </div>
+                                <div class="text__recipes">
+                                    <span>
+                                        <b>Directions:</b> 
+                                        {{mb_strimwidth($post->recipe, -0, 163, "")}} 
+                                        <a href="">SEE MORE &gt;&gt;</a>
+                                    </span>
+                                </div>
+                                <div class="text__author">
+                                    Date: {{$post->created_at}} Author: 
+                                    <a href="../public/profile/{{($post->id)-1}}">{{$post->user_id}}</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="post__text">
-
-                            <div class="text__dish">{{$post->dish}}</div>
-                            <div class="test__ingredients"><span><b>Ingredients:</b> {{mb_strimwidth($post->ingredients, -0, 80, "...")}}</span></div>
-                            <div class="text__recipes"><span><b>Directions:</b> {{mb_strimwidth($post->recipe, -0, 163, "")}} <a href="">SEE MORE &gt;&gt;</a></span></div>
-                            <div class="text__author">Date: {{$post->created_at}} Author: <a href="../public/profile/{{($post->id)-1}}">{{$post->user_id}}</a></div>
-                        </div>
-                    </div>
-        @endforeach
+                    @endforeach
+                @endisset
+                @empty($allposts)
+                    <p>
+                        Nothing found
+                    </p>
+                @endempty
           </div>
         </div>
     </div>
