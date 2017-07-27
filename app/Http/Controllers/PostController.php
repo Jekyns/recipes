@@ -60,7 +60,7 @@ class PostController extends BaseController
         $search_request = $_POST['search'];
         $allposts = DB::table('posts')
             ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
-            ->where("dish", '=', "$search_request")
+            ->where("dish", 'LIKE', "%$search_request%")
             ->get();
          $userNames = DB::table('users')
             ->select('id', 'login')

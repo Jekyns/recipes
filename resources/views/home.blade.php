@@ -60,10 +60,6 @@
         {!! Form::text('search', @$search) !!}
         {!! Form::submit('Search') !!}
         {!! Form::close() !!}
-        
-        {!! Form::open(array('action' => 'PostController@allPosts')) !!}
-        {!! Form::submit('Show All') !!}
-        {!! Form::close() !!}
     </div>
     <div>
         <div class="siteConteiner">
