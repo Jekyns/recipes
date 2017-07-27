@@ -78,6 +78,7 @@
                             <img src = {{$img}}>
                         </div>
                         <div class="post__text">
+
                             <div class="text__dish">{{$post->dish}}</div>
                             <div class="test__ingredients"><span><b>Ingredients:</b> {{mb_strimwidth($post->ingredients, -0, 80, "...")}}</span></div>
                             <div class="text__recipes"><span><b>Directions:</b> {{mb_strimwidth($post->recipe, -0, 163, "")}} <a href="">SEE MORE &gt;&gt;</a></span></div>
