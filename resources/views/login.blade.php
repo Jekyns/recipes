@@ -51,15 +51,15 @@
         <div class="bodywarp__registration-label">
             <span class="bodywarp__registration-text">Log In</span>
         </div>
- {!! Form::open(array('action' => 'LoginController@index')) !!}
+            {!! Form::open(array('action' => 'LoginController@index')) !!}
 
-        {{ Form::label('Login: ') }}{!! Form::text('name', @$name) !!}
+            {{ Form::label('Login: ') }}{!! Form::text('name', @$name) !!}
 
-        {{ Form::label('Password: ') }}{!! Form::password('password') !!}
+            {{ Form::label('Password: ') }}{!! Form::password('password') !!}
 
- {!! Form::submit('Log in') !!}
+            {!! Form::submit('Log in') !!}
 
- {!! Form::close() !!}
+            {!! Form::close() !!}
     </div>
 </div>
 </body>

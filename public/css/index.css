@@ -170,6 +170,7 @@ background: #e49d41;
     padding-bottom: 20px;
 }
 .text__author {
+    padding-top: 15px;
     font-size: 15px;
     float: right;
 }

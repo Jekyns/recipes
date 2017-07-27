@@ -36,8 +36,6 @@ class PostController extends BaseController
         }
 
     return view('addpost');
-
-
     }
     
     public function allPosts(){
@@ -46,6 +44,25 @@ class PostController extends BaseController
             ->get();
         
         $userNames = DB::table('users')
+            ->select('id', 'login')
+            ->get();
+        foreach ($allposts as $post){
+            foreach ($userNames as $userName){
+                if (($post->user_id) == ($userName->id)){
+                    $post->user_id = $userName->login;
+                }
+            }
+        }
+        return view('home')->with('allposts', $allposts);
+    }
+    
+    public function search(){
+        $search_request = $_POST['search'];
+        $allposts = DB::table('posts')
+            ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
+            ->where("dish", '=', "$search_request")
+            ->get();
+         $userNames = DB::table('users')
             ->select('id', 'login')
             ->get();
         foreach ($allposts as $post){

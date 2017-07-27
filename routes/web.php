@@ -51,3 +51,4 @@ Route::get('profile/{id}', 'ProfilesController@show');
 Route::match(['get', 'post'],'registration', 'MyController@index');
 Route::match(['get', 'post'],'addpost', 'PostController@addpost');
 
+Route::match(['get', 'post'], 'search', 'PostController@search');
