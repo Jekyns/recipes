@@ -16,26 +16,44 @@ class PostController extends BaseController
 {
     public function addPost(Request $request){
         if($request->all()){
-
-            if ($request->hasFile('image'))//åñëè â ôîðìå äîáàâèëè êàðòèíêó òî äîáàâëÿåì ýòó êàðòèêó â ïàïêó storage/app/images
+            
+            if ($request->hasFile('image'))//ÐµÑÐ»Ð¸ Ð² Ñ„Ð¾Ñ€Ð¼Ðµ Ð´Ð¾Ð±Ð°Ð²Ð¸Ð»Ð¸ ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÑƒ Ñ‚Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ ÑÑ‚Ñƒ ÐºÐ°Ñ€Ñ‚Ð¸ÐºÑƒ Ð² Ð¿Ð°Ð¿ÐºÑƒ storage/app/images
             {
                 $file = $request->file('image');
                 $filename = $file->getClientOriginalName();
                 \Storage::put('/images/posts/'.$filename, \File::get($file));
                // session(['avatar' =>'../storage/app/images/'.$filename]);
             }
-
-
-
             DB::insert('insert into posts (dish,recipe,ingredients,image,user_id) values (?,?,?,?,?)',
-                [$request->input('dish'),$request->input('recipe'),$request->input('ingredients'),'../storage/app/images/posts/'.$filename,session('id')]);
+                       [
+                           $request->input('dish'), 
+                            $request->input('recipe'), 
+                            $request->input('ingredients'), 
+                            '../storage/app/images/posts/'.$filename,session('id')
+                       ]);
             return 0;
         }
-
 
     return view('addpost');
 
 
     }
-
+    
+    public function allPosts(){
+        $allposts = DB::table('posts')
+            ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image')
+            ->get();
+        
+        $userNames = DB::table('users')
+            ->select('id', 'login')
+            ->get();
+        foreach ($allposts as $post){
+            foreach ($userNames as $userName){
+                if (($post->user_id) == ($userName->id)){
+                    $post->user_id = $userName->login;
+                }
+            }
+        }
+        return view('home')->with('allposts', $allposts);
+    }
 }
