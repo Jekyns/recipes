@@ -20,7 +20,7 @@
             @if (session('role')==3)
                 <a href="allprofiles"><span class="menuItems-item">All Profiles</span></a>
             @endif
-            @if(session('role')!=2) <!--роль 2 это забаненый пользователь-->
+            @if(session('role')!=2) <!--СЂРѕР»СЊ 2 СЌС‚Рѕ Р·Р°Р±Р°РЅРµРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ-->
                 <a href="addpost"><span class="menuItems-item">Post your recipe</span></a>
                 @endif
         <a href="../public/exit"><span class="menuItems-item">Exit</span></a>
@@ -55,6 +55,14 @@
         <h1>Recipes</h1>
     </div>
 </div>
-
-
+    <div>
+        @foreach ($allposts as $post)
+            <p>{{$post->dish}}</p>
+            <p>Author: {{$post->user_id}}</p>  
+            <p>Ingredients: {{$post->ingredients}}</p>
+            <p>{{$post->image}}</p>
+            <p>Recipe: {{$post->recipe}}</p>
+            <br>
+        @endforeach
+    </div>
 </body>

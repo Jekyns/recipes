@@ -24,32 +24,28 @@ Route::match(['get', 'post'],'register',function (Request $request) {
         return view('register');
     }
 });
-    Route::match(['get', 'post'], 'profile', function(){
-        if (session()->has('login')) {//åñëè ìû çàëîãåíåíû òî ïîêàçûâàåì íàø ïðîôèëü
+Route::match(['get', 'post'], 'profile', function(){
+    if (session()->has('login')) {//ÐµÑÐ»Ð¸ Ð¼Ñ‹ Ð·Ð°Ð»Ð¾Ð³ÐµÐ½ÐµÐ½Ñ‹ Ñ‚Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÐ¼ Ð½Ð°Ñˆ Ð¿Ñ€Ð¾Ñ„Ð¸Ð»ÑŒ
 
-            return view('profile');
-
-
-        }
-        else{ //èíà÷å âîçâðàùàåì 404
-            return '404';
-        }
-    });
-    Route::match(['get', 'post'],'exit', 'MyController@quit');
-    Route::match(['get', 'post'],'login',function (Request $request) {
-        if(session()->has('login')){
-            return redirect('profile');
-        }
-        else {
-            return view('login');
-        }
-        });
+        return view('profile');
+    }
+    else{ //Ð¸Ð½Ð°Ñ‡Ðµ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÐ¼ 404
+        return '404';
+    }
+});
+Route::match(['get', 'post'],'exit', 'MyController@quit');
+Route::match(['get', 'post'],'login',function (Request $request) {
+    if(session()->has('login')){
+        return redirect('profile');
+    }
+    else{
+        return view('login');
+    }
+});
 Route::match(['get', 'post'],'new', 'LoginController@index');
 
-Route::match(['get', 'post'],'home',function (Request $request) {
+Route::match(['get', 'post'],'home', 'PostController@allPosts');
 
-    return view('home');
-});
 Route::match(['get', 'post'],'allprofiles', 'ProfilesController@index');
 Route::get('profile/{id}', 'ProfilesController@show');
 Route::match(['get', 'post'],'registration', 'MyController@index');
