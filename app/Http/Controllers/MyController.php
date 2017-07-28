@@ -56,7 +56,7 @@ class MyController extends BaseController
     }
     public function quit(Request $request){//функция выхода из сессии
         $request->session()->flush();
-        return redirect('register');
+        return redirect('login');
 }
 
 }

@@ -59,31 +59,42 @@
 			<a href="home">Home</a>
 		@endif
 	</p>
-    
+    @if (isset($posts))
     <div>List of Posts</div>
     <div>
         <table cellpadding="7" border="2" width="100%">
             <tr>
                 <th>#</th>
                 <th>Dish</th>
+                <th>Image</th>
                 <th>Ingredients</th>
                 <th>Recipe</th>
                 <th>Edit</th>
-                <th>Delete</th>
             </tr>
             <?php  $i = 1 ?>
             @foreach ($posts as $post)
                 <tr>
+                    <?php 
+                        $img = $post->image;
+                        $id = $post->id
+                    ?>
                     <td>{{$i}}</td>
                     <td>{{$post->dish}}</td>
+                    <td>
+                    @if($img !== "")
+                        <img src = {{$img}} width="100" height="100">
+                    @endif
+                    </td>
                     <td>{{$post->ingredients}}</td>
                     <td>{{$post->recipe}}</td>
-                    <td><a>Edit</a></td>
-                    <td><a>Delete</a></td>
+                    <td>
+                        <a href="../public/edit/{{($id)}}">Edit / Delete</a>
+                    </td>
                 </tr>
                 <?php $i++ ?>
             @endforeach
         </table>
     </div>
-    
+   @endif
 </body>
+    

@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="../../public/css/index.css">
 </head>
 <body>
 	<div class="headerWrapper">
@@ -16,16 +16,16 @@
 				@endif
 				
 				@if(session()->has('login'))
-					<a href="profile"><span class="menuItems-item">Profile</span></a>
+					<a href="../profile"><span class="menuItems-item">Profile</span></a>
 
 					@if (session('role')==3)
-						<a href="allprofiles"><span class="menuItems-item">All Profiles</span></a>
+						<a href="../allprofiles"><span class="menuItems-item">All Profiles</span></a>
 					@endif
 					
 					@if(session('role')!=2) <!--роль 2 это забаненый пользователь-->
-						<a href="addpost"><span class="menuItems-item">Post your recipe</span></a>
+						<a href="../addpost"><span class="menuItems-item">Post your recipe</span></a>
 					@endif
-					<a href="../public/exit"><span class="menuItems-item">Exit</span></a>
+					<a href="../../public/exit"><span class="menuItems-item">Exit</span></a>
 				@endif
 			</div>
 		</header>
@@ -64,10 +64,10 @@
 	<div>
 		<div class="siteConteiner">
 			<div class="siteConteiner__content">
+				@if(count($allposts)<=9)<!--Если постов хватит только на одну страницу-->
 				@foreach ($allposts as $post)
 					<div class="post">
 						<div class="post__img">
-<!--                                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Borsh.jpg">-->
 							<?php $img=$post->image ?>
 							<img src = {{$img}} width="550" height="455">
 						</div>
@@ -99,6 +99,44 @@
 						</div>
 					</div>
 				@endforeach
+				@else        <!--Если постов больше,чем на одну страницу-->
+				@for($i=0;$i<10;$i++)<!--Отображает посты ровно на одну страницу-->
+				@if($id*10-10+$i<count($allposts))<!--Если не хватает постов на отображение страницы-->
+					<div class="post">
+						<div class="post__img">
+							<?php $img=$allposts[$id*10-10+$i]->image ?>
+							<img src = "../{{$img}}" width="550" height="455">
+						</div>
+						<div class="post__text">
+
+							<div class="text__dish">
+								{{$allposts[$id*10-10+$i]->dish}}
+							</div>
+
+							<div class="test__ingredients">
+								<span>
+									<b>Ingredients:</b>
+									{{mb_strimwidth($allposts[$id*10-10+$i]->ingredients, -0, 80, "...")}}
+								</span>
+							</div>
+
+							<div class="text__recipes">
+								<span>
+									<b>Directions:</b>
+									{{mb_strimwidth($allposts[$id*10-10+$i]->recipe, -0, 163, "")}}
+									<a href="../post/{{$allposts[$id*10-10+$i]->id}}">SEE MORE &gt;&gt;</a>
+								</span>
+							</div>
+
+							<div class="text__author">
+								Date: {{$allposts[$id*10-10+$i]->created_at}} Author:
+								<a href="../../public/profile/{{($allposts[$id*10-10+$i]->id)-1}}">{{$allposts[$id*10-10+$i]->user_id}}</a>
+							</div>
+						</div>
+					</div>
+					@endif
+					@endfor
+				@endif
 			</div>
 		</div>
 	</div>

@@ -50,7 +50,7 @@ Route::match(['get', 'post'],'login',function (Request $request) {
 
 Route::match(['get', 'post'],'new', 'LoginController@index');
 
-Route::match(['get', 'post'],'home', 'PostController@allPosts');
+Route::match(['get', 'post'],'home/{id}', 'PostController@allPosts');
 
 Route::match(['get', 'post'],'allprofiles', 'ProfilesController@index');
 
@@ -63,3 +63,9 @@ Route::match(['get', 'post'],'addpost', 'PostController@addpost');
 Route::match(['get', 'post'], 'search', 'PostController@search');
 
 Route::match(['get', 'post'], 'post/{id}', 'PostController@show');
+
+Route::match(['get', 'post'], 'edit/{id}', 'PostController@editPost');
+
+Route::match(['get', 'post'], 'update', 'PostController@update');
+
+Route::match(['get', 'post'], 'delete', 'PostController@delete');
