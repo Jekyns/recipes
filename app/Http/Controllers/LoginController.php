@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -15,18 +14,16 @@ use DB;
 
 class LoginController extends BaseController
 {
-
     public function index(Request $request)
     {
-        
         if($request->all()) {
             $line=1;
             $i=0;
             $input_login=$request->input('name');
             $input_password=$request->input('password');
             $results = DB::select("select * from users where login = '$input_login' AND password = '$input_password'");
-            if(!empty($results)){//если нашолся такой пользователь из базы данных
-                session(['login' => $results[0]->login]);//то заполняем сессию
+            if(!empty($results)){//РµСЃР»Рё РЅР°С€РѕР»СЃСЏ С‚Р°РєРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РёР· Р±Р°Р·С‹ РґР°РЅРЅС‹С…
+                session(['login' => $results[0]->login]);//С‚Рѕ Р·Р°РїРѕР»РЅСЏРµРј СЃРµСЃСЃРёСЋ
                 session(['password' => $results[0]->password]);
                 session(['email' => $results[0]->email]);
                 session(['first_name' => $results[0]->first_name]);
@@ -36,9 +33,9 @@ class LoginController extends BaseController
                 session(['avatar'=>$results[0]->avatar]);
                 session(['role'=>$results[0]->role]);
                 session(['id'=>$results[0]->id]);
-                return redirect('profile');//делаем редирект на профиль
+                return redirect('profile');//РґРµР»Р°РµРј СЂРµРґРёСЂРµРєС‚ РЅР° РїСЂРѕС„РёР»СЊ
             }
-            //если такого пользователя нет то возвращаем форму входа
+            //РµСЃР»Рё С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµС‚ С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРј С„РѕСЂРјСѓ РІС…РѕРґР°
         }
         return redirect('login');
     }

@@ -21,21 +21,21 @@ class MyController extends BaseController
     public function index(Request $request,CustomRequest $requestvalid){
 
         if(($request->all())&&(isset($requestvalid))) {
-                if (!$requestvalid) {//ïğîâåğÿåì âàëèäàòîğ åñëè íåóäà÷à âîâçğàùàåì ôîğìó ğåãèñòğàöèè
+                if (!$requestvalid) {//Ğ¿Ñ€Ğ¾Ğ²ĞµÑ€ÑĞµĞ¼ Ğ²Ğ°Ğ»Ğ¸Ğ´Ğ°Ñ‚Ğ¾Ñ€ ĞµÑĞ»Ğ¸ Ğ½ĞµÑƒĞ´Ğ°Ñ‡Ğ° Ğ²Ğ¾Ğ²Ğ·Ñ€Ğ°Ñ‰Ğ°ĞµĞ¼ Ñ„Ğ¾Ñ€Ğ¼Ñƒ Ñ€ĞµĞ³Ğ¸ÑÑ‚Ñ€Ğ°Ñ†Ğ¸Ğ¸
                     return redirect('register')->withErrors($requestvalid);
 
-                } else { //åñëè âàëèäàòîğ âûïîëíèëñÿ çàíîñèì äàííûå èç ôîğìû â ñåññèèş
-                    if ($request->hasFile('avatar'))//åñëè â ôîğìå äîáàâèëè êàğòèíêó òî äîáàâëÿåì ıòó êàğòèêó â ïàïêó storage/app/images
+                } else { //ĞµÑĞ»Ğ¸ Ğ²Ğ°Ğ»Ğ¸Ğ´Ğ°Ñ‚Ğ¾Ñ€ Ğ²Ñ‹Ğ¿Ğ¾Ğ»Ğ½Ğ¸Ğ»ÑÑ Ğ·Ğ°Ğ½Ğ¾ÑĞ¸Ğ¼ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ¸Ğ· Ñ„Ğ¾Ñ€Ğ¼Ñ‹ Ğ² ÑĞµÑÑĞ¸Ğ¸Ñ
+                    if ($request->hasFile('avatar'))//ĞµÑĞ»Ğ¸ Ğ² Ñ„Ğ¾Ñ€Ğ¼Ğµ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ¸Ğ»Ğ¸ ĞºĞ°Ñ€Ñ‚Ğ¸Ğ½ĞºÑƒ Ñ‚Ğ¾ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ»ÑĞµĞ¼ ÑÑ‚Ñƒ ĞºĞ°Ñ€Ñ‚Ğ¸ĞºÑƒ Ğ² Ğ¿Ğ°Ğ¿ĞºÑƒ storage/app/images
                     {
                         $file = $request->file('avatar');
                         $filename = $file->getClientOriginalName();
                         \Storage::put('/images/'.$filename, \File::get($file));
                         session(['avatar' =>'../storage/app/images/'.$filename]);
                     }
-                    else{//èíà÷å ïğèñòâàåâàåì ïóñòîòó
+                    else{//Ğ¸Ğ½Ğ°Ñ‡Ğµ Ğ¿Ñ€Ğ¸ÑÑ‚Ğ²Ğ°ĞµĞ²Ğ°ĞµĞ¼ Ğ¿ÑƒÑÑ‚Ğ¾Ñ‚Ñƒ
                         session(['avatar' =>'']);
                     }
-                    session(['login' => $request->input('login')]);//çàíîñèì âñå äàííûå â ñåññèş
+                    session(['login' => $request->input('login')]);//Ğ·Ğ°Ğ½Ğ¾ÑĞ¸Ğ¼ Ğ²ÑĞµ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ² ÑĞµÑÑĞ¸Ñ
                     session(['password' => $request->input('pass')]);
                     session(['email' => $request->input('email')]);
                     session(['first_name' => $request->input('first_name')]);
@@ -44,17 +44,17 @@ class MyController extends BaseController
                     session(['mobile' => $request->input('mobile')]);
                     session(['role'=>1]);
 
-                    DB::insert('insert into users (login ,password,email,first_name,surname,gender,mobile,avatar,role) values (?,?,?,?,?,?,?,?,?)',   //çàíîñèì âñå äàííûå â áàçó äàííûõ
+                    DB::insert('insert into users (login ,password,email,first_name,surname,gender,mobile,avatar,role) values (?,?,?,?,?,?,?,?,?)',   //Ğ·Ğ°Ğ½Ğ¾ÑĞ¸Ğ¼ Ğ²ÑĞµ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ² Ğ±Ğ°Ğ·Ñƒ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…
                         [session('login'),session('password'),session('email'),session('first_name'),session('surname'),session('gender'),session('mobile'),session('avatar'),session('role')]);
                     $login=session('login');
-                    $id = DB::select("select * from users where login = '$login'");   //áåğåì id è çàíîñèì â ñåññèş
+                    $id = DB::select("select * from users where login = '$login'");   //Ğ±ĞµÑ€ĞµĞ¼ id Ğ¸ Ğ·Ğ°Ğ½Ğ¾ÑĞ¸Ğ¼ Ğ² ÑĞµÑÑĞ¸Ñ
                     session(['id'=>$id[0]->id]);
                 }
         }
-        return redirect('profile');//âûâîäèì ïğîôèëü
+        return redirect('profile');//Ğ²Ñ‹Ğ²Ğ¾Ğ´Ğ¸Ğ¼ Ğ¿Ñ€Ğ¾Ñ„Ğ¸Ğ»ÑŒ
 
     }
-    public function quit(Request $request){//ôóíêöèÿ âûõîäà èç ñåññèè
+    public function quit(Request $request){//Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ñ Ğ²Ñ‹Ñ…Ğ¾Ğ´Ğ° Ğ¸Ğ· ÑĞµÑÑĞ¸Ğ¸
         $request->session()->flush();
         return redirect('register');
 }

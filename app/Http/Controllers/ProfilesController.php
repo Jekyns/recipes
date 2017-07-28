@@ -16,35 +16,35 @@ use DB;
 
 class ProfilesController extends BaseController
 {
-    public function index(Request $request)//функция возвращает вьюху с массивом всех пользователей
+    public function index(Request $request)//С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РІСЊСЋС…Сѓ СЃ РјР°СЃСЃРёРІРѕРј РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
     {
         $line=1;
         $i=0;
         $users=array(
 
     );
-        $all=DB::table('users')->get();//содержит все строки базы данных
+        $all=DB::table('users')->get();//СЃРѕРґРµСЂР¶РёС‚ РІСЃРµ СЃС‚СЂРѕРєРё Р±Р°Р·С‹ РґР°РЅРЅС‹С…
 
-        for($i=0;isset($all[$i]);++$i){ //пока не закончились строки базы данных
+        for($i=0;isset($all[$i]);++$i){ //РїРѕРєР° РЅРµ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ СЃС‚СЂРѕРєРё Р±Р°Р·С‹ РґР°РЅРЅС‹С…
 
-
-            $users[$i]=array(//заполнять массив всех пользователей
+            $users[$i]=array(//Р·Р°РїРѕР»РЅСЏС‚СЊ РјР°СЃСЃРёРІ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
                 'login' => $all[$i]->login,
-            'password' => $all[$i]->password,
-            'email' =>$all[$i]->email,
-            'first_name' => $all[$i]->first_name,
-            'surname' =>$all[$i]->surname,
-            'gender' => $all[$i]->gender,
-            'mobile' => $all[$i]->mobile,
-            'avatar'=>$all[$i]->avatar,
-            'role'=>$all[$i]->role,
+                'password' => $all[$i]->password,
+                'email' =>$all[$i]->email,
+                'first_name' => $all[$i]->first_name,
+                'surname' =>$all[$i]->surname,
+                'gender' => $all[$i]->gender,
+                'mobile' => $all[$i]->mobile,
+                'avatar'=>$all[$i]->avatar,
+                'role'=>$all[$i]->role,
                 'id'=>$all[$i]->id
             );
         }
-        return view('allprofiles')->with(['users'=>$users]);//передаем массив всех пользователей во вьюху allprofiles
+        return view('allprofiles')->with(['users'=>$users]);//РїРµСЂРµРґР°РµРј РјР°СЃСЃРёРІ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІРѕ РІСЊСЋС…Сѓ allprofiles
     }
-    public function show($id){//показывает страницу определенного юзера
-        $all=DB::table('users')->get();//содержит все строки базы данных
+    public function show($id){//РїРѕРєР°Р·С‹РІР°РµС‚ СЃС‚СЂР°РЅРёС†Сѓ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ СЋР·РµСЂР°
+        $all=DB::table('users')->get();//СЃРѕРґРµСЂР¶РёС‚ РІСЃРµ СЃС‚СЂРѕРєРё Р±Р°Р·С‹ РґР°РЅРЅС‹С…
+        
         $user=array(
             'login' => $all[$id]->login,
             'password' => $all[$id]->password,
@@ -56,7 +56,13 @@ class ProfilesController extends BaseController
             'avatar'=>$all[$id]->avatar,
             'role'=>$all[$id]->role
         );
-        return view('profile')->with(['user'=>$user]);//возвращаем вьюху профиля с нужным нам юзером
+        
+        $posts = DB::table('posts')
+            ->select('dish', 'image', 'ingredients', 'recipe')
+            ->where("user_id", '=', "$id")
+            ->get();
+                
+        return view('profile')->with('user', $user); //РІРѕР·РІСЂР°С‰Р°РµРј РІСЊСЋС…Сѓ РїСЂРѕС„РёР»СЏ СЃ РЅСѓР¶РЅС‹Рј РЅР°Рј СЋР·РµСЂРѕРј
     }
 
 

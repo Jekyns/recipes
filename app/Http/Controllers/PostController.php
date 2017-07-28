@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -17,7 +18,7 @@ class PostController extends BaseController
     public function addPost(Request $request){
         if($request->all()){
             
-            if ($request->hasFile('image'))//если в форме добавили картинку то добавляем эту картику в папку storage/app/images
+            if ($request->hasFile('image'))//РµСЃР»Рё РІ С„РѕСЂРјРµ РґРѕР±Р°РІРёР»Рё РєР°СЂС‚РёРЅРєСѓ С‚Рѕ РґРѕР±Р°РІР»СЏРµРј СЌС‚Сѓ РєР°СЂС‚РёРєСѓ РІ РїР°РїРєСѓ storage/app/images
             {
                 $file = $request->file('image');
                 $filename = $file->getClientOriginalName();
@@ -34,7 +35,6 @@ class PostController extends BaseController
                        ]);
             return redirect('home');
         }
-
     return view('addpost');
     }
     
@@ -46,6 +46,7 @@ class PostController extends BaseController
         $userNames = DB::table('users')
             ->select('id', 'login')
             ->get();
+			
         foreach ($allposts as $post){
             foreach ($userNames as $userName){
                 if (($post->user_id) == ($userName->id)){
@@ -57,14 +58,18 @@ class PostController extends BaseController
     }
     
     public function search(){
+		
         $search_request = $_POST['search'];
+		
         $allposts = DB::table('posts')
             ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
             ->where("dish", 'LIKE', "%$search_request%")
             ->get();
+			
          $userNames = DB::table('users')
             ->select('id', 'login')
             ->get();
+			
         foreach ($allposts as $post){
             foreach ($userNames as $userName){
                 if (($post->user_id) == ($userName->id)){
@@ -74,12 +79,32 @@ class PostController extends BaseController
         }
         return view('home')->with('allposts', $allposts);
     }
-    public function show($id){//показывает страницу определенного поста
-        $post=DB::table('posts')
+	
+    public function show($id){
+        $post = DB::table('posts')
             ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
             ->where("id", '=', "$id")
             ->get();
-       return view('post')->with(['post'=>$post[0]]);//возвращаем вьюху поста с нужным нам постом
+       return view('post')->with(['post' => $post[0]]);
+    }
+    
+    public function userPosts(){
+        $login= session('login');
+        $user_id = DB::table('users')
+            ->select('id')
+            ->where('login','=',"$login")
+            ->get();
+        
+        foreach ($user_id as $user_id){
+            $id = $user_id->id;
+        }
+        
+        $posts = DB::table('posts')
+            ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
+            ->where("user_id", '=', "$id")
+            ->get();
+        
 
+        return view('profile')->with('posts', $posts);
     }
 }
