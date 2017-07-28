@@ -32,8 +32,14 @@ class MyController extends BaseController
                         \Storage::put('/images/'.$filename, \File::get($file));
                         session(['avatar' =>'../storage/app/images/'.$filename]);
                     }
-                    else{//иначе пристваеваем пустоту
+                    else{//иначе пристваеваем картинку пустого аватара
                         session(['avatar' =>'']);
+                        if($request->input('gender')=='Male'){
+                            session(['avatar' =>'../storage/app/images/Male.png']);
+                        }
+                        else{
+                            session(['avatar' =>'../storage/app/images/Female.png']);
+                        }
                     }
                     session(['login' => $request->input('login')]);//заносим все данные в сессию
                     session(['password' => $request->input('pass')]);
