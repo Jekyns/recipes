@@ -28,8 +28,9 @@
 			</div>
 		</header>
 	</div>
-  
+
     @foreach ($post as $post)
+        @if($post->user_id==session('id'))
         {!! Form::open(array('action' => array('PostController@update', $post->id))) !!}
             <div class="form-group">
                 {!! 
@@ -49,7 +50,7 @@
             </div>
             <div class="form-group">
                 {!!
-                    Form::text('recipe', 
+                    Form::textarea('recipe',
                         $value ="$post->recipe",
                         array('class'=>'form-control',
                             'placeholder'=>'recipe'))
@@ -61,6 +62,7 @@
         {!! Form::open(array('action' => array('PostController@delete', $post->id))) !!}
         {!! Form::submit('Delete') !!}
         {!! Form::close() !!}
+        @endif
     @endforeach
     
 </body>
