@@ -11,8 +11,8 @@
 			<div class="menuItems">
 			
 				@if(!session()->has('login'))
-				<a href="register"><span class="menuItems-item">Sign Up</span></a>
-				<a href="login"><span class="menuItems-item">Log In</span></a>
+				<a href="../register"><span class="menuItems-item">Sign Up</span></a>
+				<a href="../login"><span class="menuItems-item">Log In</span></a>
 				@endif
 				
 				@if(session()->has('login'))
@@ -138,6 +138,12 @@
 					@endfor
 				@endif
 			</div>
+		</div>
+		<div class="footer">
+			@for($i=count($allposts),$j=1;$i>0;$i-=10,$j++)
+				<a class="footer-a" href="{{$j}}">{{$j}}</a>
+				@endfor
+
 		</div>
 	</div>
 </body>

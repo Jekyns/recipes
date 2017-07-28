@@ -201,3 +201,10 @@ header.content__head {
     float: left;
     padding-left: 100px;
 }
+.footer{
+    text-align: center;
+}
+.footer-a{
+    padding-left: 15px;
+    font-size: 20px;
+}

@@ -56,7 +56,7 @@
 			<a href="../home">Home</a>
 		@else
 			<a href="../public/exit">Exit</a>
-			<a href="home">Home</a>
+			<a href="home/1">Home</a>
 		@endif
 	</p>
     @if (isset($posts))

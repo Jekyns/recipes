@@ -16,7 +16,7 @@
 		<header id="siteHeader">
 			<div class="menuItems">
 				<a href="login"><span class="menuItems-item">Log In</span></a>
-				<a href="home"><span class="menuItems-item">Home</span></a>
+				<a href="home/1"><span class="menuItems-item">Home</span></a>
 			</div>
 		</header>
 	</div>

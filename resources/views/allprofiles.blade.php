@@ -36,7 +36,7 @@
 				@endfor
 			</table>
 		
-			<a href="home">Home</a>
+			<a href="home/1">Home</a>
 		
 		@else
 			404

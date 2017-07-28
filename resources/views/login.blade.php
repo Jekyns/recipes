@@ -38,7 +38,7 @@
     <header id="siteHeader">
         <div class="menuItems">
             <a href="register"><span class="menuItems-item">Sign Up</span></a>
-            <a href="home"><span class="menuItems-item">Home</span></a>
+            <a href="home/1"><span class="menuItems-item">Home</span></a>
         </div>
     </header>
 </div>
