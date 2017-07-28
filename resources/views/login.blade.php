@@ -52,7 +52,7 @@
             <span class="bodywarp__registration-text">Log In</span>
         </div>
             {!! Form::open(array('action' => 'LoginController@index')) !!}
-
+            {!!Form::token()!!}
             {{ Form::label('Login: ') }}{!! Form::text('name', @$name) !!}
 
             {{ Form::label('Password: ') }}{!! Form::password('password') !!}

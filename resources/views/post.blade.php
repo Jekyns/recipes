@@ -37,9 +37,11 @@
 			<div class="content__ingredients">
 				<h3>Ingredients</h3>
 				<?php
+
 				$products=explode(',',$post->ingredients);//разбивает ингредиенты на каждый ингредиент
 				$products[0]=' '.$products[0];
 				for($i=0;$i <count($products);$i++){
+				try{
 				list($error,$count,$ingredient) = explode(' ',$products[$i]);//разбивает ингредиет на количество и продукт
 				?>
 				<div class="ingredients__item">
@@ -47,7 +49,15 @@
 					<span class="count">{{$count}}</span><br>
 				</div>
 				<?php
+					}catch (Exception $e){?>
+				<div class="ingredients__item">
+					<span class="ingredient">{{$products[$i]}}</span>
+					<span class="count"></span><br>
+				</div>
+<?php
 				}
+				}
+
 				?>
 			</div>
 

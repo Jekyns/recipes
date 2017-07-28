@@ -59,7 +59,7 @@
 			<a href="home">Home</a>
 		@endif
 	</p>
-    
+    @if (isset($posts))
     <div>List of Posts</div>
     <div>
         <table cellpadding="7" border="2" width="100%">
@@ -85,5 +85,5 @@
             @endforeach
         </table>
     </div>
-    
+   @endif
 </body>
