@@ -70,42 +70,6 @@
 			@endfor
 				</div>
 			<div class="siteConteiner__content">
-				@if(count($allposts)<=9)<!--Если постов хватит только на одну страницу-->
-				@foreach ($allposts as $post)
-					<div class="post">
-						<div class="post__img">
-							<?php $img=$post->image ?>
-							<img src = {{$img}} width="550" height="455">
-						</div>
-						<div class="post__text">
-							
-							<div class="text__dish">
-								{{$post->dish}}
-							</div>
-							
-							<div class="test__ingredients">
-								<span>
-									<b>Ingredients:</b> 
-									{{mb_strimwidth($post->ingredients, -0, 80, "...")}}
-								</span>
-							</div>
-							
-							<div class="text__recipes">
-								<span>
-									<b>Directions:</b> 
-									{{mb_strimwidth($post->recipe, -0, 163, "")}} 
-									<a href="post/{{$post->id}}">SEE MORE &gt;&gt;</a>
-								</span>
-							</div>
-							
-							<div class="text__author">
-								Date: {{$post->created_at}} Author: 
-								<a href="../public/profile/{{($post->id)-1}}">{{$post->user_id}}</a>
-							</div>
-						</div>
-					</div>
-				@endforeach
-				@else        <!--Если постов больше,чем на одну страницу-->
 				@for($i=0;$i<10;$i++)<!--Отображает посты ровно на одну страницу-->
 				@if($id*10-10+$i<count($allposts))<!--Если не хватает постов на отображение страницы-->
 					<div class="post">
@@ -136,13 +100,31 @@
 
 							<div class="text__author">
 								Date: {{$allposts[$id*10-10+$i]->created_at}} Author:
-								<a href="../../public/profile/{{($allposts[$id*10-10+$i]->id)-1}}">{{$allposts[$id*10-10+$i]->user_id}}</a>
+								<?php
+								$userNames = DB::table('users')
+										->select('id', 'login')
+										->get();
+								foreach ($userNames as $userName){ //переобразовывает логи пользователя в его ид
+									if($allposts[$id*10-10+$i]->user_id==$userName->login)
+										$allposts[$id*10-10+$i]->user_id=$userName->id;
+								}
+
+								?>
+								<a href="../../public/profile/{{($allposts[$id*10-10+$i]->user_id)-1}}">
+									<?php
+									foreach ($userNames as $userName){ //переобразовывает ид пользователя в его логин
+										if (($allposts[$id*10-10+$i]->user_id) == ($userName->id)){
+											$allposts[$id*10-10+$i]->user_id = $userName->login;
+										}
+									}
+									?>
+									{{$allposts[$id*10-10+$i]->user_id}}
+								</a>
 							</div>
 						</div>
 					</div>
 					@endif
 					@endfor
-				@endif
 			</div>
 		</div>
 		<div class="footer">
