@@ -32,26 +32,31 @@
 	<div class="siteConteiner">
 		<div class="siteConteiner__content">
 			<header class="content__head">
-				<h1>Potate</h1>
+				<h1>{{$post->dish}}</h1>
 			</header>
 			<div class="content__ingredients">
 				<h3>Ingredients</h3>
+				<?php
+				$products=explode(',',$post->ingredients);//разбивает ингредиенты на каждый ингредиент
+				$products[0]=' '.$products[0];
+				for($i=0;$i <count($products);$i++){
+				list($error,$count,$ingredient) = explode(' ',$products[$i]);//разбивает ингредиет на количество и продукт
+				?>
 				<div class="ingredients__item">
-					<span class="ingredient">potate</span>
-					<span class="count">1</span><br>
+					<span class="ingredient">{{$ingredient}}</span>
+					<span class="count">{{$count}}</span><br>
 				</div>
-				<div class="ingredients__item">
-					<span class="ingredient">picolini</span>
-					<span class="count">2</span>
-				</div>
+				<?php
+				}
+				?>
 			</div>
-			<div class="content__image">
-			<img src="../../storage/app/images/posts/Depositphotos_44100665_l-2015_1444918558.jpg" width="670" height="455">
-			</div>
-			<div class="content__directions">
+
+			<div class="content__image"><img src="../{{$post->image}}" width="670" height="455"></div><div class="content__directions">
 				<h3>Directions</h3>
 				<span>{{$post->recipe}}</span>
+
 			</div>
+
 		</div>
 	</div>
 </body>
