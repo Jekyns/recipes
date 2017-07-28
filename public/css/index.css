@@ -203,8 +203,14 @@ header.content__head {
 }
 .footer{
     text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .footer-a{
     padding-left: 15px;
     font-size: 20px;
+}
+.siteConteiner__page{
+    text-align: center;
+    padding-top: 15px;
 }

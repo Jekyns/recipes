@@ -31,6 +31,7 @@
 		</header>
 	</div>
 	<div class="homePageHeader">
+
 		<div class="homePageHeader__wrapper">
 			{!! Form::open(array('action' => 'PostController@search', 'class'=>'homePageHeader__wrapper-form')) !!}
 			{!! Form::text('search', @$search) !!}
@@ -63,6 +64,11 @@
 	</div>
 	<div>
 		<div class="siteConteiner">
+			<div class="siteConteiner__page">
+			@for($i=count($allposts),$j=1;$i>0;$i-=10,$j++)
+				<a class="footer-a" href="{{$j}}">{{$j}}</a>
+			@endfor
+				</div>
 			<div class="siteConteiner__content">
 				@if(count($allposts)<=9)<!--Если постов хватит только на одну страницу-->
 				@foreach ($allposts as $post)
