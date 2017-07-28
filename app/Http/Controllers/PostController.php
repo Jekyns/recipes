@@ -150,4 +150,8 @@ class PostController extends BaseController
         return redirect('profile');
         
     }
+    public function deleteany($id){
+        DB::table('posts')->where('id', $id)->delete();
+        return redirect('home/1');
+    }
 }

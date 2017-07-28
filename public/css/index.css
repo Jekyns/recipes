@@ -214,3 +214,9 @@ header.content__head {
     text-align: center;
     padding-top: 15px;
 }
+.text__exit{
+    float: right;
+}
+.text__exit-img {
+    padding-bottom: 20px;
+}

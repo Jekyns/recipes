@@ -9,7 +9,7 @@
 	<div class="headerWrapper">
 		<header id="siteHeader">
 			<div class="menuItems">
-			
+
 				@if(!session()->has('login'))
 				<a href="../register"><span class="menuItems-item">Sign Up</span></a>
 				<a href="../login"><span class="menuItems-item">Log In</span></a>
@@ -80,6 +80,11 @@
 						<div class="post__text">
 
 							<div class="text__dish">
+								@if(session('role')==3)
+								<div class="text__exit"><!--Только для админа-->
+									<a href="../deleting/{{$allposts[$id*10-10+$i]->id}}"><img class="text__exit-img" src="http://alvilab.ru/images/close.png" width="20" heght="20"></a>
+								</div>
+								@endif
 								{{$allposts[$id*10-10+$i]->dish}}
 							</div>
 

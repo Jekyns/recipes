@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../public/css/index.css">
 </head>
 <body>
 	<?php
@@ -53,7 +54,7 @@
 		
 		@if(isset($user))
 			<a href="../allprofiles">Back</a>
-			<a href="../home">Home</a>
+			<a href="../home/1">Home</a>
 		@else
 			<a href="../public/exit">Exit</a>
 			<a href="home/1">Home</a>

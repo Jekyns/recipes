@@ -57,3 +57,4 @@ Route::match(['get', 'post'], 'edit/{id}', 'PostController@editPost');
 Route::match(['get', 'post'], 'update', 'PostController@update');
 
 Route::match(['get', 'post'], 'delete', 'PostController@delete');
+Route::match(['get', 'post'],'deleting/{id}', 'PostController@deleteany');
