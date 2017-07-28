@@ -16,7 +16,7 @@
 				@endif
 				
 				@if(session()->has('login'))
-					<a href="../profile"><span class="menuItems-item">Profile</span></a>
+					<a href="../profile"><span class="menuItems-item"><img class="menuItems-img" src="../{{session('avatar')}}" width="35" height="35"></span></a>
 
 					@if (session('role')==3)
 						<a href="../allprofiles"><span class="menuItems-item">All Profiles</span></a>
