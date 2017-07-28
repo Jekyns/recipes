@@ -50,7 +50,7 @@ Route::match(['get', 'post'],'login',function (Request $request) {
 
 Route::match(['get', 'post'],'new', 'LoginController@index');
 
-Route::match(['get', 'post'],'home', 'PostController@allPosts');
+Route::match(['get', 'post'],'home/{id}', 'PostController@allPosts');
 
 Route::match(['get', 'post'],'allprofiles', 'ProfilesController@index');
 
