@@ -223,3 +223,34 @@ header.content__head {
 .menuItems-img{
    border-radius : 50px;
 }
+.profile__info {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+img.profile__avatar-img {
+    width: 300px;
+    border-radius: 150px;
+}
+.profile__avatar {
+    text-align: center;
+}
+span.profile__info-item {
+    font-size: 19px;
+}
+.profile{
+    padding-top: 50px;
+}
+.head__back{
+    float: right;
+    padding-top: 8px;
+    font-size: 19px;
+}
+span.content__recipe {
+    text-align: left;
+    font-size: 19px;
+    padding-bottom: 50px;
+}
+.text__recipes {
+    padding-top: 15px;
+}

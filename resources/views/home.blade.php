@@ -109,7 +109,7 @@
 								$userNames = DB::table('users')
 										->select('id', 'login')
 										->get();
-								foreach ($userNames as $userName){ //переобразовывает логи пользователя в его ид
+								foreach ($userNames as $userName){ //переобразовывает логин пользователя в его ид
 									if($allposts[$id*10-10+$i]->user_id==$userName->login)
 										$allposts[$id*10-10+$i]->user_id=$userName->id;
 								}

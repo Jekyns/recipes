@@ -3,9 +3,24 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="../public/css/index.css">
+	<link rel="stylesheet" href="http://inoproject/recipes/public/css/index.css">
 </head>
 <body>
+<div class="headerWrapper">
+	<header id="siteHeader">
+		<div class="menuItems">
+			@if(isset($user))
+				<a href="../allprofiles"><span class="menuItems-item">Back</span></a>
+				<a href="../home/1"><span class="menuItems-item">Home</span></a>
+			@else
+				<a href="home/1"><span class="menuItems-item">Home</span></a>
+				<a href="../public/exit"><span class="menuItems-item">Exit</span></a>
+
+			@endif
+		</div>
+	</header>
+</div>
+<div class="profile">
 	<?php
 	$login = session('login');
 	$password= session('password');
@@ -18,15 +33,17 @@
 	?>
 
 	@if(isset($user))<!--если нам передают человека которого нам нужно отобразить -->
-        <h3>Profile</h3>
 		@if ($user['avatar'])
 			<?php $avatar='../'.$user['avatar']?>
-			<img src = {{$avatar}}>
+				<div class="profile__avatar">
+					<img class="profile__avatar-img" src = "{{$avatar}}">
+				</div>
 		@endif
 		@else
-		<h3>Your profile</h3>
-		@if (session('avatar'))
-		<img src = {{$avatar}}>
+			@if (session('avatar'))
+				<div class="profile__avatar">
+		<img class="profile__avatar-img" src = "{{$avatar}}">
+				</div>
 		@endif
 	@endif
 	
@@ -42,26 +59,19 @@
 			$avatar=$user['avatar'];
 		?>
 	@endif
-	
-	<p>
-		Login: {{$login}}<br>
-		Password: {{$password}}<br>
-		Email: {{$email}}<br>
-		First name: {{$first_name}}<br>
-		Surname: {{$surname}}<br>
-		Gender: {{$gender}}<br>
-		Mobile number: {{$mobile}}<br>
-		
-		@if(isset($user))
-			<a href="../allprofiles">Back</a>
-			<a href="../home/1">Home</a>
-		@else
-			<a href="../public/exit">Exit</a>
-			<a href="home/1">Home</a>
-		@endif
-	</p>
+	<div class="profile__info">
+
+		<span class="profile__info-item">Login: {{$login}}<br></span>
+		<span class="profile__info-item">Password: {{$password}}<br></span>
+		<span class="profile__info-item">Email: {{$email}}<br></span>
+		<span class="profile__info-item">First name: {{$first_name}}<br></span>
+		<span class="profile__info-item">Surname: {{$surname}}<br></span>
+		<span class="profile__info-item">Gender: {{$gender}}<br></span>
+		<span class="profile__info-item">Mobile number: {{$mobile}}<br></span>
+
+		</div>
     @if (isset($posts))
-    <div>List of Posts</div>
+    <h2>My Posts</h2>
     <div>
         <table cellpadding="7" border="2" width="100%">
             <tr>
@@ -97,6 +107,6 @@
         </table>
     </div>
    @endif
- 
+ </div>
 </body>
 

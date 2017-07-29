@@ -32,6 +32,7 @@
 	<div class="siteConteiner">
 		<div class="siteConteiner__content">
 			<header class="content__head">
+				<div class="head__back"><a href="../home/1">Back &gt</a></div>
 				<h1>{{$post->dish}}</h1>
 			</header>
 			<div class="content__ingredients">
@@ -63,8 +64,7 @@
 
 			<div class="content__image"><img src="../{{$post->image}}" width="670" height="455"></div><div class="content__directions">
 				<h3>Directions</h3>
-				<span>{{$post->recipe}}</span>
-
+				<span class="content__recipe">{{$post->recipe}}</span>
 			</div>
 
 		</div>
