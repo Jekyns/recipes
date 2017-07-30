@@ -37,7 +37,6 @@
 			</table>
 		
 			<a href="home/1">Home</a>
-		
 		@else
 			404
 		@endif

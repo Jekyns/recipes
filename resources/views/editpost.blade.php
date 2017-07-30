@@ -12,11 +12,9 @@
 				@if(!session()->has('login'))
 					<a href="../register"><span class="menuItems-item">Sign Up</span></a>
 					<a href="../login"><span class="menuItems-item">Log In</span></a>
-
 				@endif
 				@if(session()->has('login'))
 					<a href="../profile"><span class="menuItems-item">Profile</span></a>
-
 					@if (session('role')==3)
 						<a href="../allprofiles"><span class="menuItems-item">All Profiles</span></a>
 					@endif
@@ -28,10 +26,9 @@
 			</div>
 		</header>
 	</div>
-
     @foreach ($post as $post)
         @if($post->user_id==session('id'))
-        {!! Form::open(array('action' => array('PostController@update', $post->id))) !!}
+			{!! Form::open(array('action' => array('PostController@update', $post->id))) !!}
             <div class="form-group">
                 {!! 
                     Form::text('dish', 
@@ -56,14 +53,13 @@
                             'placeholder'=>'recipe'))
                 !!}
             </div>
-        {!! Form::submit('Edit') !!}
-        {!! Form::close() !!}
-        
-        {!! Form::open(array('action' => array('PostController@delete', $post->id))) !!}
-        {!! Form::submit('Delete') !!}
-        {!! Form::close() !!}
+			{!! Form::submit('Edit') !!}
+			{!! Form::close() !!}
+			
+			{!! Form::open(array('action' => array('PostController@delete', $post->id))) !!}
+			{!! Form::submit('Delete') !!}
+			{!! Form::close() !!}
         @endif
     @endforeach
-    
 </body>
     

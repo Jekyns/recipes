@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="../public/css/index.css">
     <style>
-        body{
+        body {
             background-image: url(../public/css/images/registration_bg.jpg);
             background-size: cover;
         }
@@ -20,12 +20,12 @@
 			</div>
 		</header>
 	</div>
-	@if(count($errors)>0)
+	@if (count($errors) > 0)
 		<div class="errors">
-	@foreach($errors->all() as $error)
-		<li>{{$error}}</li>
+		@foreach ($errors->all() as $error)
+			<li>{{$error}}</li>
 		@endforeach
-			</div>
+		</div>
 	@endif
 	<div class="bodywarp">
 		<div class="bodywarp__registration">

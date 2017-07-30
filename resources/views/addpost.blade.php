@@ -4,16 +4,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<style>
-		span.form-group{
+		span.form-group {
 			opacity: 0.7;
 			padding-left: 10px;
 		}
-		</style>
+	</style>
 </head>
 <body>
-
 	{!! Form::open(['files' => true],array('action' => 'PostController@addpost')) !!}
 	{!!Form::token()!!}
+	
 	<div class="form-group">
 		{!! 
 			Form::text('dish', null,
@@ -22,6 +22,7 @@
 				  'placeholder'=>'Name of the dish')) 
 		!!}
 	</div>
+	
 	<div class="form-group">
 		{!! 
 			Form::text('ingredients', null,

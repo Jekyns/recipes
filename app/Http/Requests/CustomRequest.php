@@ -26,8 +26,6 @@ class CustomRequest extends FormRequest
      */
     public function rules()
     {
-
-
         return [
             'login' => 'required|uniqs',
             'pass' => 'required',
@@ -35,12 +33,9 @@ class CustomRequest extends FormRequest
             'first_name' => 'required',
             'surname' => 'required',
             'gender' => 'required',
-            'mobile' => 'required',
-
-
-        ];
-
+            'mobile' => 'required',];
     }
+	
     public function messages()
     {
         return [
@@ -52,8 +47,6 @@ class CustomRequest extends FormRequest
             'first_name.required' => 'Hey, you forgot your first name',
             'surname.required' => 'Hey, you forgot your surname!',
             'mobile.required' => 'Hey, you forgot your phone number!',
-
-
         ];
     }
 }

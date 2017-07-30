@@ -15,29 +15,31 @@ use DB;
 
 class PostController extends BaseController
 {
-    public function addPost(Request $request){
-        if($request->all()){
-            
-            if ($request->hasFile('image'))//РµСЃР»Рё РІ С„РѕСЂРјРµ РґРѕР±Р°РІРёР»Рё РєР°СЂС‚РёРЅРєСѓ С‚Рѕ РґРѕР±Р°РІР»СЏРµРј СЌС‚Сѓ РєР°СЂС‚РёРєСѓ РІ РїР°РїРєСѓ storage/app/images
-            {
+    public function addPost(Request $request)
+	{
+        if ($request->all())
+		{
+			if ($request->hasFile('image')){
                 $file = $request->file('image');
                 $filename = $file->getClientOriginalName();
                 \Storage::put('/images/posts/'.$filename, \File::get($file));
             }
-            DB::insert('insert into posts (dish,recipe,ingredients,image,user_id,created_at) values (?, ?, ?, ?, ?, now())',
+            DB::insert('INSERT into 
+			posts (dish,recipe,ingredients,image,user_id,created_at) 
+			values (?, ?, ?, ?, ?, now())',
                        [
                            $request->input('dish'), 
                            $request->input('recipe'), 
                            $request->input('ingredients'), 
                            '../storage/app/images/posts/'.$filename, 
-                           session('id'),
-                       ]);
+                           session('id'),]);
             return redirect('home/1');
         }
-    return view('addpost');
+		return view('addpost');
     }
     
-    public function allPosts($id){
+    public function allPosts($id)
+	{
         $allposts = DB::table('posts')
             ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
             ->get();
@@ -46,9 +48,12 @@ class PostController extends BaseController
             ->select('id', 'login')
             ->get();
 			
-        foreach ($allposts as $post){
-            foreach ($userNames as $userName){
-                if (($post->user_id) == ($userName->id)){
+        foreach ($allposts as $post)
+		{
+            foreach ($userNames as $userName)
+			{
+                if (($post->user_id) == ($userName->id))
+				{
                     $post->user_id = $userName->login;
                 }
             }
@@ -56,12 +61,12 @@ class PostController extends BaseController
         return view('home')->with('allposts', $allposts)->with('id',$id);
     }
     
-    public function search(){
-		
+    public function search()
+	{
         $search_request = $_POST['search'];
 		
         $allposts = DB::table('posts')
-            ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
+			->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
             ->where("dish", 'LIKE', "%$search_request%")
             ->get();
 			
@@ -69,9 +74,12 @@ class PostController extends BaseController
             ->select('id', 'login')
             ->get();
 			
-        foreach ($allposts as $post){
-            foreach ($userNames as $userName){
-                if (($post->user_id) == ($userName->id)){
+        foreach ($allposts as $post)
+		{
+            foreach ($userNames as $userName)
+			{
+                if (($post->user_id) == ($userName->id))
+				{
                     $post->user_id = $userName->login;
                 }
             }
@@ -79,22 +87,26 @@ class PostController extends BaseController
         return view('home')->with('allposts', $allposts);
     }
 	
-    public function show($id){
+    public function show($id)
+	{
         $post = DB::table('posts')
             ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
             ->where("id", '=', "$id")
             ->get();
+			
        return view('post')->with(['post' => $post[0]]);
     }
     
-    public function userPosts(){
+    public function userPosts()
+	{
         $login= session('login');
         $user_id = DB::table('users')
             ->select('id')
             ->where('login','=',"$login")
             ->get();
         
-        foreach ($user_id as $user_id){
+        foreach ($user_id as $user_id)
+		{
             $id = $user_id->id;
         }
         
@@ -102,12 +114,12 @@ class PostController extends BaseController
             ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
             ->where("user_id", '=', "$id")
             ->get();
-        
-
+			
         return view('profile')->with('posts', $posts);
     }
     
-    public function editPost($id){
+    public function editPost($id)
+	{
         $post = DB::table('posts')
             ->select('id', 'user_id', 'dish', 'ingredients', 'recipe', 'image', 'created_at')
             ->where("id", '=', "$id")
@@ -116,10 +128,11 @@ class PostController extends BaseController
         return view('editpost')->with('post', $post);
     }
     
-    public function update(){
+    public function update()
+	{
         // url строка
         $url = $_SERVER['REQUEST_URI'];
-        // ищем индекс вхождения " ? "
+        // ищем индекс вхождения символа " ? "
         $a = strripos($url, '?');
         // длина url строки 
         $len = strlen($url);
@@ -130,12 +143,14 @@ class PostController extends BaseController
         $ingredients = $_POST['ingredients'];
         $recipe = $_POST['recipe'];
         
-        $affected = DB::update('update posts set dish = ?, ingredients = ?, recipe = ?  where id = ?', [$dish, $ingredients, $recipe, $id]);
+        $affected = DB::update('update posts set dish = ?, ingredients = ?, recipe = ?  
+		WHERE id = ?', [$dish, $ingredients, $recipe, $id]);
         
         return redirect('profile');
     }
     
-    public function delete(){
+    public function delete()
+	{
         // url строка
         $url = $_SERVER['REQUEST_URI'];
         // ищем индекс вхождения " ? "
@@ -145,13 +160,15 @@ class PostController extends BaseController
         //вытаскиваем передаваемый параметр id
         $id =  substr($url, $a+1, $len);
     
-        
         DB::table('posts')->where('id', $id)->delete();
+		
         return redirect('profile');
         
     }
-    public function deleteany($id){
+    public function deleteany($id)
+	{
         DB::table('posts')->where('id', $id)->delete();
+		
         return redirect('home/1');
     }
 }

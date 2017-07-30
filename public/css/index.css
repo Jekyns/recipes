@@ -15,40 +15,48 @@
     display: flex;
     height: 100vh;
 }
-.bodywarp__registration-form{
+
+.bodywarp__registration-form {
     text-align: right;
 }
-.registration-input{
+
+.registration-input {
     margin-top: 5px;
 }
-.headerWrapper{
+
+.headerWrapper {
     height: 50px;
 }
 
-header#siteHeader{
+header#siteHeader {
     height: 50px;
     background:rgba(36, 41, 45, 0.6);
 }
-.menuItems{
+
+.menuItems {
     height: 50px;
     padding-top: 13px;
     float: right;
     padding-right: 15px;
 }
-.menuItems-item{
+
+.menuItems-item {
     padding: 16px 10px;
     color: #fff;
     font-family: 'Open Sans';
     font-size: 18px;
     text-decoration: none;
 }
-label#input__label-avatar{
+
+label#input__label-avatar {
     margin-right: 50px;
     margin-top: 20px;
 }
-input.input__button{
+
+input.input__button {
     margin-right: 25px;
 }
+
 .bodywarp__registration {
     height: 450px;
     width: 450px;
@@ -57,27 +65,32 @@ input.input__button{
     border: 7px groove #a9a9a9;
     border-radius: 30px;
 }
+
 span.bodywarp__registration-text{
     font-size: 44px;
 }
+
 .bodywarp__registration-label{
     text-align: center;
     padding-left: 140px;
 }
+
 .errors{
     background: #fff;
     border-radius: 15px;
     padding: 10px 10px;
     width: 280px;
 }
-a:hover {
 
+a:hover {
     text-decoration: none;
 }
+
 .menuItems-item:hover {
     color: #e49d41;
     text-decoration: none;
 }
+
 .homePageHeader {
     font-family: 'icomoon';
     margin: 0;
@@ -85,73 +98,86 @@ a:hover {
     overflow: hidden;
     border-bottom: groove 4px;
 }
+
 .social {
     float: left;
     display: inline-flex;
     padding-top: 10px;
 
 }
-.homePageHeader__wrapper {
 
+.homePageHeader__wrapper {
     text-align: center;
     max-width: 80%;
     margin: 0 auto;
 }
+
 .socical__item-facebook a::before {
     content: "\ea90";
     font-size: 24px;
     color: #24292d;
 }
+
 .socical__item-github a::before{
     content: "\eab0";
     font-size: 24px;
     color: #24292d;
 }
+
 .socical__item-instagram a::before {
     content: "\ea92";
     font-size: 24px;
     color: #24292d;
 }
+
 .socical__item-twitter a::before {
     content: "\ea96";
     font-size: 24px;
     color: #24292d;
 }
+
 .socical__item-facebook, .socical__item-instagram, .socical__item-twitter, .socical__item-github {
     padding-left: 5px;
     padding-right: 5px;
     border: 1px solid #24292d;
     border-radius: 50px;
 }
-.socical__item-github:hover, .socical__item-twitter:hover, .socical__item-instagram:hover, .socical__item-facebook:hover{
+
+.socical__item-github:hover, .socical__item-twitter:hover, .socical__item-instagram:hover, .socical__item-facebook:hover {
 background: #e49d41;
 }
-.socical__item{
+
+.socical__item {
     padding-right: 10px;
 }
 
-.socical__item a{
+.socical__item a {
     font-size: 0;
 }
+
 .siteConteiner {
     margin: 0 auto;
     padding: 0;
 }
+
 .siteConteiner__content {
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
+
 .post {
     border-bottom: solid 1px #24292d;
     overflow: hidden;
     padding-bottom: 40px;
     padding-top: 40px;
 }
+
 .post__img {
     overflow: hidden;
     float: left;
 }
+
 .post__text {
     text-align: left;
     max-width: 70%;
@@ -161,66 +187,82 @@ background: #e49d41;
     overflow: hidden;
     padding-left: 50px;
 }
+
 .text__dish {
     font-size: 36px;
     text-align: center;
     padding-bottom: 27px;
 }
+
 .ingredients {
     padding-bottom: 20px;
 }
+
 .text__author {
     padding-top: 15px;
     font-size: 15px;
     float: right;
 }
-.homePageHeader__wrapper-form{
+
+.homePageHeader__wrapper-form {
     float: right;
     padding-top: 10px;
 }
+
 .content__ingredients {
     float: left;
     overflow: hidden;
 }
+
 .ingredients__item {
     border-bottom: dotted 2px #7b7e81;
     padding-top: 15px;
 }
+
 span.count {
     float: right;
 }
+
 .content__directions {
     float: left;
     padding-left: 120px;
 
 }
+
 header.content__head {
     text-align: center;
 }
+
 .content__image {
     float: left;
     padding-left: 100px;
 }
-.footer{
+
+.footer {
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
 }
-.footer-a{
+
+.footer-a {
     padding-left: 15px;
     font-size: 20px;
 }
-.siteConteiner__page{
+
+.siteConteiner__page {
     text-align: center;
     padding-top: 15px;
 }
-.text__exit{
+
+.text__exit {
     float: right;
 }
+
 .text__exit-img {
     padding-bottom: 20px;
 }
-.menuItems-img{
+
+.menuItems-img {
    border-radius : 50px;
 }
 .profile__info {
@@ -228,29 +270,36 @@ header.content__head {
     padding-top: 40px;
     padding-bottom: 40px;
 }
-img.profile__avatar-img {
+
+img.profile__avatar-img  {
     width: 300px;
     border-radius: 150px;
 }
+
 .profile__avatar {
     text-align: center;
 }
+
 span.profile__info-item {
     font-size: 19px;
 }
-.profile{
+
+.profile {
     padding-top: 50px;
 }
-.head__back{
+
+.head__back {
     float: right;
     padding-top: 8px;
     font-size: 19px;
 }
+
 span.content__recipe {
     text-align: left;
     font-size: 19px;
     padding-bottom: 50px;
 }
+
 .text__recipes {
     padding-top: 15px;
 }

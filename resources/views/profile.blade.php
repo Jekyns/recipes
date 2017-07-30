@@ -15,7 +15,6 @@
 			@else
 				<a href="home/1"><span class="menuItems-item">Home</span></a>
 				<a href="../public/exit"><span class="menuItems-item">Exit</span></a>
-
 			@endif
 		</div>
 	</header>
@@ -23,7 +22,7 @@
 <div class="profile">
 	<?php
 	$login = session('login');
-	$password= session('password');
+	$password = session('password');
 	$email = session('email');
 	$first_name = session('first_name');
 	$surname = session('surname');
@@ -32,7 +31,7 @@
 	$avatar = session('avatar');
 	?>
 
-	@if(isset($user))<!--если нам передают человека которого нам нужно отобразить -->
+	@if (isset($user))<!--если нам передают человека которого нам нужно отобразить -->
 		@if ($user['avatar'])
 			<?php $avatar='../'.$user['avatar']?>
 				<div class="profile__avatar">
@@ -46,21 +45,19 @@
 				</div>
 		@endif
 	@endif
-	
-	@if(isset($user))
+	@if (isset($user))
 		<?php 
             $login = $user['login'];//если администратор хочет посмотреть какого то пользователя то он передат данные этого пользователя
-			$password= $user['password'];
+			$password = $user['password'];
 			$email = $user['email'];
 			$first_name = $user['first_name'];
 			$surname = $user['surname'];
 			$gender = $user['gender'];
 			$mobile = $user['mobile'];
-			$avatar=$user['avatar'];
+			$avatar = $user['avatar'];
 		?>
 	@endif
 	<div class="profile__info">
-
 		<span class="profile__info-item">Login: {{$login}}<br></span>
 		<span class="profile__info-item">Password: {{$password}}<br></span>
 		<span class="profile__info-item">Email: {{$email}}<br></span>
@@ -68,8 +65,7 @@
 		<span class="profile__info-item">Surname: {{$surname}}<br></span>
 		<span class="profile__info-item">Gender: {{$gender}}<br></span>
 		<span class="profile__info-item">Mobile number: {{$mobile}}<br></span>
-
-		</div>
+	</div>
     @if (isset($posts))
     <h2>My Posts</h2>
     <div>
@@ -109,4 +105,3 @@
    @endif
  </div>
 </body>
-
